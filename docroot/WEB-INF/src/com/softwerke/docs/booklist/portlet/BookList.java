@@ -33,6 +33,7 @@ import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
 
 /**
  * Portlet implementation class BookList
+ * Tets test test
  */
 public class BookList extends MVCPortlet {
 	
