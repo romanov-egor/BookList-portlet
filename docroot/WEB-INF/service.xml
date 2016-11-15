@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.softwerke.docs.booklist">
+	<author>rei</author>
+	<namespace>BL</namespace>
+	<entity name="Book" local-service="true" uuid="true" remote-service="false">
+
+
+		<!-- PK fields -->
+
+		<column name="bookId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="title" type="String"></column>
+        <column name="isbn" type="String"></column>
+        <column name="releaseDate" type="Date"></column>
+        <column name="authors" type="Collection" entity="Author" mapping-table="Book_Author"></column>
+        <order by="asc">
+            <order-column name="title" order-by="asc"></order-column>
+        </order>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+	</entity>
+	<entity name="Author" local-service="true" uuid="true">
+
+
+		<!-- PK fields -->
+
+		<column name="authorId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="firstName" type="String"></column>
+        <column name="lastName" type="String"></column>
+        <column name="birthDate" type="Date"></column>
+        <column name="email" type="String"></column>
+        <column name="books" type="Collection" entity="Book" mapping-table="Book_Author"></column>
+        <order by="asc">
+            <order-column name="firstName" order-by="asc"></order-column>
+        </order>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+	</entity>
+    <exceptions>
+        <exception>BookTitle</exception>
+        <exception>BookISBN</exception>
+        <exception>BookReleaseDate</exception>
+        <exception>AuthorFirstName</exception>
+        <exception>AuthorEmail</exception>
+        <exception>AuthorBirthDate</exception>
+    </exceptions>
+</service-builder>
