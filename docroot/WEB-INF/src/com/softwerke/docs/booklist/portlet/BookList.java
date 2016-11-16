@@ -320,23 +320,26 @@ public class BookList extends MVCPortlet {
 	        
 	        long currBookId = ParamUtil.getLong(renderRequest, "bookId");
 	        long currAuthorId = ParamUtil.getLong(renderRequest, "authorId");
-	        BookItem currBook = new BookItem(BookLocalServiceUtil.getBook(currBookId));
-	        AuthorItem currAuthor = new AuthorItem(AuthorLocalServiceUtil.getAuthor(currAuthorId));
+	        BookItem currBook = null;
+	        AuthorItem currAuthor = null;
 	        ArrayList<Author> otherAuthors = new ArrayList<Author>(AuthorLocalServiceUtil.getAuthors(groupId));
 	        ArrayList<Book> otherBooks = new ArrayList<Book>(BookLocalServiceUtil.getBooks(groupId));
 	        
-	        if (currBook != null) {
+	        if (currBookId > 0) {
+	        	currBook = new BookItem(BookLocalServiceUtil.getBook(currBookId));
 		        otherAuthors.removeAll(currBook.getRelatedAuthors());
 	        }
 	        
-	        if (currAuthor != null)
+	        if (currAuthorId > 0)
 	        {
+	        	currAuthor = new AuthorItem(AuthorLocalServiceUtil.getAuthor(currAuthorId));
 	        	otherBooks.removeAll(currAuthor.getRelatedBooks());
 	        }
 	        
 	        List<String> bookPrefs = Arrays.asList(prefs.getValues("bookPrefs", new String[]{}));
 	        List<String> authorPrefs = Arrays.asList(prefs.getValues("authorPrefs", new String[]{}));
 			
+	        renderRequest.setAttribute("backURL", ParamUtil.getString(renderRequest, "backURL"));
 	        renderRequest.setAttribute("bookPrefs", bookPrefs);
 	        renderRequest.setAttribute("authorPrefs", authorPrefs);
 	        renderRequest.setAttribute("names", names);

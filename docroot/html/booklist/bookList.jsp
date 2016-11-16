@@ -38,9 +38,9 @@
 			<portlet:param name="bookId" value="${currBook.getBookId()}"/>
 		</portlet:actionURL>
 		<tr>
-			<td>${book.getTitle()}</td>
-			<td>${book.getIsbn()}</td>
-			<td>${book.getReleaseDate()}</td>
+			<td>${currBook.getTitle()}</td>
+			<td>${currBook.getIsbn()}</td>
+			<td>${currBook.getReleaseDate()}</td>
 			<td>
 				<a href="${addBookForAuthorURL}">
 					<button type="button">Add</button>

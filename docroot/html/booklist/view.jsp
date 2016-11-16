@@ -5,11 +5,11 @@
 
 <portlet:renderURL var="addBookURL">
 	<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
-	<portlet:param name="itemId" value="-1" />
+	<portlet:param name="bookId" value="-1" />
 </portlet:renderURL>
 <portlet:renderURL var="addAuthorURL">
 	<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
-	<portlet:param name="itemId" value="-1" />
+	<portlet:param name="authorId" value="-1" />
 </portlet:renderURL>
 
 <html>
@@ -32,49 +32,49 @@
 					<portlet:renderURL var="editBookURL">
 						<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
 						<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
-						<portlet:param name="authorId" value="${currBook.getId()}" />
+						<portlet:param name="bookId" value="${currBook.getId()}" />
 					</portlet:renderURL>
-					<a href="${editAuthorURL}">
-						<c:if test="${bookPrefs.contains(\"title\"}">
+					<a href="${editBookURL}">
+						<c:if test="${bookPrefs.contains(\"title\")}">
 							${currBook.getTitle()} 
 						</c:if>
-						<c:if test="${bookPrefs.contains(\"ISBN\"}">
+						<c:if test="${bookPrefs.contains(\"ISBN\")}">
 							${currBook.getISBN()} 
 						</c:if>
-						<c:if test="${bookPrefs.contains(\"releaseDate\"}">
+						<c:if test="${bookPrefs.contains(\"releaseDate\")}">
 							${currBook.getReleaseDate()} 
 						</c:if>
 					</a>
 				</td>
 				<td>
 					<table border="1">
-						<tr>
-							<td>
-								<c:if test="${currBook.getRelatedAuthors() != null}">
-									<c:forEach items="${currBook.getRelatedAuthors()}" var="currAuthor">
-										<portlet:renderURL var="editAuthorURL">
-											<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
-											<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
-											<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
-										</portlet:renderURL>
-										<a href="${editAuthorURL}">
-											<c:if test="${authorPrefs.contains(\"firstName\"}">
-												${currAuthor.getFirstName()}
-											</c:if>
-											<c:if test="${authorPrefs.contains(\"lastName\"}">
-												${currAuthor.getLastName()}
-											</c:if>
-											<c:if test="${authorPrefs.contains(\"birthDate\"}">
-												${currAuthor.getBirthDate()}
-											</c:if>
-											<c:if test="${authorPrefs.contains(\"email\"}">
-												${currAuthor.getEmail()}
-											</c:if>
-										</a>
-									</c:forEach>
-								</c:if>
-							</td>
-						</tr>
+						<c:if test="${currBook.getRelatedAuthors() != null}">
+							<c:forEach items="${currBook.getRelatedAuthors()}" var="currAuthor">
+								<tr>
+								<td>
+								<portlet:renderURL var="editAuthorURL">
+									<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
+									<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
+									<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
+								</portlet:renderURL>
+								<a href="${editAuthorURL}">
+									<c:if test="${authorPrefs.contains(\"firstName\")}">
+										${currAuthor.getFirstName()}
+									</c:if>
+									<c:if test="${authorPrefs.contains(\"lastName\")}">
+										${currAuthor.getLastName()}
+									</c:if>
+									<c:if test="${authorPrefs.contains(\"birthDate\")}">
+										${currAuthor.getBirthDate()}
+									</c:if>
+									<c:if test="${authorPrefs.contains(\"email\")}">
+										${currAuthor.getEmail()}
+									</c:if>
+								</a>
+								</td>
+								</tr>
+							</c:forEach>
+						</c:if>			
 					</table>
 				</td>
 			</tr>

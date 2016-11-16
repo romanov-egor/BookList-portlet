@@ -75,13 +75,13 @@
 					<tr>
 						<td>
 							<a href="${editBookURL}">
-								<c:if test="${bookPrefs.contains(\"title\"}">
+								<c:if test="${bookPrefs.contains(\"title\")}">
 									${currBook.getTitle()} 
 								</c:if>
-								<c:if test="${bookPrefs.contains(\"ISBN\"}">
+								<c:if test="${bookPrefs.contains(\"ISBN\")}">
 									${currBook.getIsbn()} 
 								</c:if>
-								<c:if test="${bookPrefs.contains(\"releaseDate\"}">
+								<c:if test="${bookPrefs.contains(\"releaseDate\")}">
 									${currBook.getReleaseDate()} 
 								</c:if>
 							</a>

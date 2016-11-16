@@ -68,16 +68,16 @@
 					<tr>
 						<td>
 							<a href="${editAuthorURL}">
-								<c:if test="${authorPrefs.contains(\"firstName\"}">
+								<c:if test="${authorPrefs.contains(\"firstName\")}">
 									${currAuthor.getFirstName()}
 								</c:if>
-								<c:if test="${authorPrefs.contains(\"lastName\"}">
+								<c:if test="${authorPrefs.contains(\"lastName\")}">
 									${currAuthor.getLastName()}
 								</c:if>
-								<c:if test="${authorPrefs.contains(\"birthDate\"}">
+								<c:if test="${authorPrefs.contains(\"birthDate\")}">
 									${currAuthor.getBirthDate()}
 								</c:if>
-								<c:if test="${authorPrefs.contains(\"email\"}">
+								<c:if test="${authorPrefs.contains(\"email\")}">
 									${currAuthor.getEmail()}
 								</c:if>
 							</a>
