@@ -13,30 +13,30 @@
 <portlet:renderURL var="listURL">
 	<portlet:param name="mvcPath" value="/html/booklist/authorList.jsp"></portlet:param>
 	<portlet:param name="backURL" value="/html/booklist/editBook.jsp"/>
-	<portlet:param name="itemId" value="${item.getId()}"/>
+	<portlet:param name="bookId" value="${book.getId()}"/>
 </portlet:renderURL>
 
 <portlet:actionURL name="deleteBook" var="deleteURL">
-	<portlet:param name="itemId" value="${item.getId()}"/>
+	<portlet:param name="bookId" value="${book.getId()}"/>
 </portlet:actionURL>
 
 <html>
-<c:if test="${item == null}">
-	<h1>Add Book</h1>
-	<portlet:actionURL name="addBook" var="bookDetails"></portlet:actionURL>
-	<c:set var="title" scope="session" value=""/>
-	<c:set var="ISBN" scope="session" value=""/>
-	<c:set var="releaseDate" scope="session" value=""/>
-</c:if>
-<c:if test="${item != null}">
-	<h1>Edit Book</h1>
-	<portlet:actionURL name="updateBook" var="bookDetails">
-		<portlet:param name="itemId" value="${item.getId()}"/>
-	</portlet:actionURL>
-	<c:set var="title" scope="session" value="${item.getParameter(\"title\")}"/>
-	<c:set var="ISBN" scope="session" value="${item.getParameter(\"ISBN\")}"/>
-	<c:set var="releaseDate" scope="session" value="${item.getParameter(\"releaseDate\")}"/>
-</c:if>
+	<c:if test="${book == null}">
+		<h1>Add Book</h1>
+		<portlet:actionURL name="addBook" var="bookDetails"></portlet:actionURL>
+		<c:set var="title" scope="session" value=""/>
+		<c:set var="ISBN" scope="session" value=""/>
+		<c:set var="releaseDate" scope="session" value=""/>
+	</c:if>
+	<c:if test="${book != null}">
+		<h1>Edit Book</h1>
+		<portlet:actionURL name="updateBook" var="bookDetails">
+			<portlet:param name="bookId" value="${book.getId()}"/>
+		</portlet:actionURL>
+		<c:set var="title" scope="session" value="${book.getTitle()}"/>
+		<c:set var="ISBN" scope="session" value="${book.getISBN()}"/>
+		<c:set var="releaseDate" scope="session" value="${book.getReleaseDate()}"/>
+	</c:if>
 
 	<form name="<portlet:namespace />fm1" action="${bookDetails}" method="POST">
 		<br>
@@ -52,40 +52,43 @@
 		<br>
 		<input name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}"></input>
         <br>
-        <c:if test="${item != null}">
+        <c:if test="${book != null}">
         Authors
         <a href="${listURL}">
         	<button type="button">Add Author for this Book</button>
         </a>
         <br>
         <table border="1">
-        <c:forEach items="${tableRows}" var="row">
-			<c:if test="${row.contains(item)}">
-				<c:forEach items="${row.getNamedElement(\"Authors\")}" var="author">
-					<portlet:renderURL var="editURL">
+				<c:forEach items="${book.getRelatedAuthors()}" var="currAuthor">
+					<portlet:renderURL var="editAuthorURL">
 						<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
 						<portlet:param name="backURL" value="/html/booklist/editBook.jsp"/>
-						<portlet:param name="itemId" value="${author.getId()}" />
+						<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
 					</portlet:renderURL>
 					<tr>
 						<td>
-							<a href="${editURL}">
-								<c:forEach items="${author.getParameters()}" var="parameter">
-									<c:if test="${parameter.isVisible()}">
-								 		${parameter.getValue()}
-								 	</c:if>
-								</c:forEach>
+							<a href="${editAuthorURL}">
+								<c:if test="${authorPrefs.contains(\"firstName\"}">
+									${currAuthor.getFirstName()}
+								</c:if>
+								<c:if test="${authorPrefs.contains(\"lastName\"}">
+									${currAuthor.getLastName()}
+								</c:if>
+								<c:if test="${authorPrefs.contains(\"birthDate\"}">
+									${currAuthor.getBirthDate()}
+								</c:if>
+								<c:if test="${authorPrefs.contains(\"email\"}">
+									${currAuthor.getEmail()}
+								</c:if>
 							</a>
 						</td>
 					</tr>
 				</c:forEach>
-			</c:if>
-		</c:forEach>
 		</table>
 		<br>
 		</c:if>
 		<button type="submit">Submit changes</button>
-		<c:if test="${item != null}">
+		<c:if test="${book != null}">
 			<a href="${deleteURL}">
 				<button type="button">Delete this Book</button>
 			</a>

@@ -5,7 +5,7 @@
 
 <portlet:renderURL var="backURL">
 	<portlet:param name="mvcPath" value="${backURL}"></portlet:param>
-	<portlet:param name="itemId" value="${item.getId()}" />
+	<portlet:param name="authorId" value="${author.getId()}" />
 </portlet:renderURL>
 
 <table border="1">
@@ -15,30 +15,27 @@
 		<th>Release Date</th>
 		<th></th>
 	</tr>
-	<c:forEach items="${tableRows}" var="row">
-		<c:if test="${row.contains(item)}">
-			<c:forEach items="${row.getNamedElement(\"Books\")}" var="book">
-				<portlet:actionURL name="removeBookForAuthor" var="removeBookForAuthorURL">
-						<portlet:param name="itemId" value="${item.getId()}"/>
-						<portlet:param name="bookId" value="${book.getId()}"/>
-				</portlet:actionURL>
-				<tr>
-					<td>${book.getParameter("title")}</td>
-					<td>${book.getParameter("ISBN")}</td>
-					<td>${book.getParameter("releaseDate")}</td>
-					<td>
-						<a href="${removeBookForAuthorURL}">
-							<button type="button">Remove</button>
-						</a>
-					</td>
-				</tr>
-			</c:forEach>			
-		</c:if>
-	</c:forEach>
-	<c:forEach items="${otherBooks}" var="book">
+	<c:forEach items="${author.getRelatedBooks()}" var="currBook">
+		<portlet:actionURL name="removeBookForAuthor" var="removeBookForAuthorURL">
+			<portlet:param name="authorId" value="${author.getId()}"/>
+			<portlet:param name="bookId" value="${currBook.getBookId()}"/>
+		</portlet:actionURL>
+		<tr>
+			<td>${currBook.getTitle()}</td>
+			<td>${currBook.getIsbn()}</td>
+			<td>${currBook.getReleaseDate()}</td>
+			<td>
+				<a href="${removeBookForAuthorURL}">
+					<button type="button">Remove</button>
+				</a>
+			</td>
+		</tr>
+	</c:forEach>			
+
+	<c:forEach items="${otherBooks}" var="currBook">
 		<portlet:actionURL name="addBookForAuthor" var="addBookForAuthorURL">
-			<portlet:param name="itemId" value="${item.getId()}"/>
-			<portlet:param name="bookId" value="${book.getBookId()}"/>
+			<portlet:param name="authorId" value="${author.getId()}"/>
+			<portlet:param name="bookId" value="${currBook.getBookId()}"/>
 		</portlet:actionURL>
 		<tr>
 			<td>${book.getTitle()}</td>

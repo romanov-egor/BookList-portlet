@@ -27,13 +27,14 @@ import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextFactory;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 import com.softwerke.docs.booklist.model.Author;
+import com.softwerke.docs.booklist.model.AuthorItem;
 import com.softwerke.docs.booklist.model.Book;
+import com.softwerke.docs.booklist.model.BookItem;
 import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
 import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
 
 /**
  * Portlet implementation class BookList
- * Tets test test
  */
 public class BookList extends MVCPortlet {
 	
@@ -62,7 +63,7 @@ public class BookList extends MVCPortlet {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 		        Book.class.getName(), request);
 		
-			long bookId = ParamUtil.getLong(request, "itemId");
+			long bookId = ParamUtil.getLong(request, "bookId");
 		    String title = ParamUtil.getString(request, "title");
 		    String ISBN = ParamUtil.getString(request, "ISBN");
 		    Date releaseDate = ParamUtil.getDate(request, "releaseDate", DateFormat.getDateInstance());
@@ -89,7 +90,7 @@ public class BookList extends MVCPortlet {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 		        Book.class.getName(), request);
 		
-			long bookId = ParamUtil.getLong(request, "itemId");
+			long bookId = ParamUtil.getLong(request, "bookId");
 		    long authorId = ParamUtil.getLong(request, "authorId");
 		    
 		    Book book = BookLocalServiceUtil.getBook(bookId);
@@ -116,7 +117,7 @@ public class BookList extends MVCPortlet {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 		        Book.class.getName(), request);
 		
-			long bookId = ParamUtil.getLong(request, "itemId");
+			long bookId = ParamUtil.getLong(request, "bookId");
 		    long authorId = ParamUtil.getLong(request, "authorId");
 		    
 		    Book book = BookLocalServiceUtil.getBook(bookId);
@@ -141,7 +142,7 @@ public class BookList extends MVCPortlet {
 	public void deleteBook(ActionRequest request, ActionResponse response)
 			throws PortalException, SystemException {
 		
-			long bookId = ParamUtil.getLong(request, "itemId");
+			long bookId = ParamUtil.getLong(request, "bookId");
 			try {
 		        BookLocalServiceUtil.deleteBook(bookId);
 		        SessionMessages.add(request, "bookDeleted");
@@ -179,7 +180,7 @@ public class BookList extends MVCPortlet {
 	    ServiceContext serviceContext = ServiceContextFactory.getInstance(
 	        Author.class.getName(), request);
 	    
-	    long authorId = ParamUtil.getLong(request, "itemId");
+	    long authorId = ParamUtil.getLong(request, "authorId");
 	    String firstName = ParamUtil.getString(request, "firstName");
 	    String lastName = ParamUtil.getString(request, "lastName");
 	    Date birthDate = ParamUtil.getDate(request, "birthDate", DateFormat.getDateInstance());
@@ -206,7 +207,7 @@ public class BookList extends MVCPortlet {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 		        Author.class.getName(), request);
 		
-			long authorId = ParamUtil.getLong(request, "itemId");
+			long authorId = ParamUtil.getLong(request, "authorId");
 		    long bookId = ParamUtil.getLong(request, "bookId");
 		    
 		    Author author = AuthorLocalServiceUtil.getAuthor(authorId);
@@ -233,7 +234,7 @@ public class BookList extends MVCPortlet {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 		        Author.class.getName(), request);
 		
-			long authorId = ParamUtil.getLong(request, "itemId");
+			long authorId = ParamUtil.getLong(request, "authorId");
 		    long bookId = ParamUtil.getLong(request, "bookId");
 		    
 		    Author author = AuthorLocalServiceUtil.getAuthor(authorId);
@@ -258,7 +259,7 @@ public class BookList extends MVCPortlet {
 	public void deleteAuthor(ActionRequest request, ActionResponse response)
 			throws PortalException, SystemException {
 		
-		long authorId = ParamUtil.getLong(request, "itemId");
+		long authorId = ParamUtil.getLong(request, "authorId");
 		
 		try {
 	        AuthorLocalServiceUtil.deleteAuthor(authorId);
@@ -291,51 +292,6 @@ public class BookList extends MVCPortlet {
 		}
 	}
 	
-	private BookItem getBookItem(Book book, PortletPreferences prefs) {
-		BookItem item = new BookItem("Book", book);
-		ArrayList<String> bookPrefs = new ArrayList<String>(Arrays.asList(prefs.getValues("bookPrefs", new String[]{})));
-		item.addParameter("title", book.getTitle(), bookPrefs.contains("title"));
-		item.addParameter("ISBN", book.getIsbn(), bookPrefs.contains("ISBN"));
-		item.addParameter("releaseDate", book.getReleaseDate().toString(), bookPrefs.contains("releaseDate"));
-		return item;
-	}
-	
-	private AuthorItem getAuthorItem(Author author, PortletPreferences prefs) {
-		AuthorItem item = new AuthorItem("Author", author);
-		ArrayList<String> authorPrefs = new ArrayList<String>(Arrays.asList(prefs.getValues("authorPrefs", new String[]{})));
-		item.addParameter("firstName", author.getFirstName(), authorPrefs.contains("firstName"));
-		item.addParameter("lastName", author.getLastName(), authorPrefs.contains("lastName"));
-		item.addParameter("birthDate", author.getBirthDate().toString(), authorPrefs.contains("birthDate"));
-		item.addParameter("email", author.getEmail(), authorPrefs.contains("email"));
-		return item;
-	}
-	
-	public Item getItem(List<ItemRow> tableRows, long itemId) {
-		for (ItemRow ir : tableRows) {
-			for (List<Item> li : ir.getRow().values()) {
-				for (Item i : li) {
-					if (i.getId() == itemId) {
-						return i;
-					}
-				}
-			}
-		}
-		return null;
-	}
-	
-	public List<ItemRow> getAllAuthors(List<ItemRow> tableRows, long itemId) {
-		ArrayList<ItemRow> rows = new ArrayList<ItemRow>(); 
-		for (ItemRow ir : tableRows) {
-			for (List<Item> li : ir.getRow().values()) {
-				for (Item i : li) {
-					if (i.getId() == itemId) {
-						rows.add(ir);
-					}
-				}
-			}
-		}
-		return rows;
-	}
 	
 	@Override
 	public void render(RenderRequest renderRequest,
@@ -346,55 +302,50 @@ public class BookList extends MVCPortlet {
 	        PortletPreferences prefs = renderRequest.getPreferences();
 	        long groupId = serviceContext.getScopeGroupId();
 	        
-	        ArrayList<ItemRow> tableRows = new ArrayList<ItemRow>();
 	        ArrayList<String> names = new ArrayList<String>();
 	        names.add("Books");
 	        names.add("Authors");
 	        
 	        List<Book> books = BookLocalServiceUtil.getBooks(groupId);
-	        
-	        for (int i = 0; i < books.size(); i++) {
-	        	ItemRow row = new ItemRow(names);
-	        	ArrayList<Item> bookList = new ArrayList<Item>();
-	        	bookList.add(getBookItem(books.get(i), prefs));
-	        	row.addNamedElement("Books", bookList);
-	        	
-	        	List<Author> authors = BookLocalServiceUtil.getAuthorsByBook(books.get(i).getBookId());
-	        	
-	        	ArrayList<Item> authorList = new ArrayList<Item>();
-	        	for(int j = 0; j < authors.size(); j++) {
-	        		authorList.add(getAuthorItem(authors.get(j), prefs));
-	        	}
-	        	
-	        	row.addNamedElement("Authors", authorList);
-	        	tableRows.add(row);
+	        ArrayList<BookItem> bookItems = new ArrayList<BookItem>();
+	        for (Book book : books) {
+	        	bookItems.add(new BookItem(book));
 	        }
 	        
-	        Item currItem = getItem(tableRows, ParamUtil.getLong(renderRequest, "itemId"));
+	        List<Author> authors = AuthorLocalServiceUtil.getAuthors(groupId);
+	        ArrayList<AuthorItem> authorItems = new ArrayList<AuthorItem>();
+	        for (Author author : authors) {
+	        	authorItems.add(new AuthorItem(author));
+	        }
+	        
+	        long currBookId = ParamUtil.getLong(renderRequest, "bookId");
+	        long currAuthorId = ParamUtil.getLong(renderRequest, "authorId");
+	        BookItem currBook = new BookItem(BookLocalServiceUtil.getBook(currBookId));
+	        AuthorItem currAuthor = new AuthorItem(AuthorLocalServiceUtil.getAuthor(currAuthorId));
 	        ArrayList<Author> otherAuthors = new ArrayList<Author>(AuthorLocalServiceUtil.getAuthors(groupId));
-	        List<Book> otherBooks = new ArrayList<Book>(BookLocalServiceUtil.getBooks(groupId));
+	        ArrayList<Book> otherBooks = new ArrayList<Book>(BookLocalServiceUtil.getBooks(groupId));
 	        
-	        if (currItem != null)
-	        {
-		        if (currItem.getColumn() == "Book")
-		        {
-		        	List<Author> currBookAuthors = BookLocalServiceUtil.getAuthorsByBook(currItem.getId());
-		        	otherAuthors.removeAll(currBookAuthors);
-		        }
-		        
-		        if (currItem.getColumn() == "Author")
-		        {
-		        	List<Book> currAuthorBooks = AuthorLocalServiceUtil.getBooksByAuthor(currItem.getId());
-		        	otherBooks.removeAll(currAuthorBooks);
-		        }
+	        if (currBook != null) {
+		        otherAuthors.removeAll(currBook.getRelatedAuthors());
 	        }
 	        
-	        renderRequest.setAttribute("prefs", prefs);
+	        if (currAuthor != null)
+	        {
+	        	otherBooks.removeAll(currAuthor.getRelatedBooks());
+	        }
+	        
+	        List<String> bookPrefs = Arrays.asList(prefs.getValues("bookPrefs", new String[]{}));
+	        List<String> authorPrefs = Arrays.asList(prefs.getValues("authorPrefs", new String[]{}));
+			
+	        renderRequest.setAttribute("bookPrefs", bookPrefs);
+	        renderRequest.setAttribute("authorPrefs", authorPrefs);
+	        renderRequest.setAttribute("names", names);
 	        renderRequest.setAttribute("otherBooks", otherBooks);
 	        renderRequest.setAttribute("otherAuthors", otherAuthors);
-	        renderRequest.setAttribute("names", names);
-	        renderRequest.setAttribute("tableRows", tableRows);
-	        renderRequest.setAttribute("item", currItem);
+	        renderRequest.setAttribute("books", bookItems);
+	        renderRequest.setAttribute("authors", authorItems);
+	        renderRequest.setAttribute("book", currBook);
+	        renderRequest.setAttribute("author", currAuthor);
 	        
 	    } catch (Exception e) {
 

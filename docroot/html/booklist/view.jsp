@@ -26,39 +26,57 @@
 				<th>${name}</th>
 			</c:forEach>
 		</tr>
-		<c:forEach items="${tableRows}" var="row">
+		<c:forEach items="${books}" var="currBook">
 			<tr>
-				<c:forEach items="${row.getRow()}" var="element">
-					<td>
-						<table border="1">
-							<c:forEach items="${element.value}" var="item">
-								<tr>
-								<c:if test="${element.value != null}">
-									<portlet:renderURL var="editURL">
-										<c:if test="${item.getColumn() == \"Book\"}">
-											<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
-										</c:if>
-										<c:if test="${item.getColumn() == \"Author\"}">
+				<td>
+					<portlet:renderURL var="editBookURL">
+						<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
+						<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
+						<portlet:param name="authorId" value="${currBook.getId()}" />
+					</portlet:renderURL>
+					<a href="${editAuthorURL}">
+						<c:if test="${bookPrefs.contains(\"title\"}">
+							${currBook.getTitle()} 
+						</c:if>
+						<c:if test="${bookPrefs.contains(\"ISBN\"}">
+							${currBook.getISBN()} 
+						</c:if>
+						<c:if test="${bookPrefs.contains(\"releaseDate\"}">
+							${currBook.getReleaseDate()} 
+						</c:if>
+					</a>
+				</td>
+				<td>
+					<table border="1">
+						<tr>
+							<td>
+								<c:if test="${currBook.getRelatedAuthors() != null}">
+									<c:forEach items="${currBook.getRelatedAuthors()}" var="currAuthor">
+										<portlet:renderURL var="editAuthorURL">
 											<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
-										</c:if>
-										<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
-										<portlet:param name="itemId" value="${item.getId()}" />
-									</portlet:renderURL>
-									<td>
-									<a href="${editURL}">
-										<c:forEach items="${item.getParameters()}" var="parameter">
-											<c:if test="${parameter.isVisible()}">
-												${parameter.getValue()}
+											<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
+											<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
+										</portlet:renderURL>
+										<a href="${editAuthorURL}">
+											<c:if test="${authorPrefs.contains(\"firstName\"}">
+												${currAuthor.getFirstName()}
 											</c:if>
-										</c:forEach>
-									</a>
-									</td>
+											<c:if test="${authorPrefs.contains(\"lastName\"}">
+												${currAuthor.getLastName()}
+											</c:if>
+											<c:if test="${authorPrefs.contains(\"birthDate\"}">
+												${currAuthor.getBirthDate()}
+											</c:if>
+											<c:if test="${authorPrefs.contains(\"email\"}">
+												${currAuthor.getEmail()}
+											</c:if>
+										</a>
+									</c:forEach>
 								</c:if>
-								</tr>
-							</c:forEach>
-						</table>
-					</td>
-				</c:forEach>
+							</td>
+						</tr>
+					</table>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

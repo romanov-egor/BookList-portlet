@@ -5,7 +5,7 @@
 
 <portlet:renderURL var="backURL">
 	<portlet:param name="mvcPath" value="${backURL}"></portlet:param>
-	<portlet:param name="itemId" value="${item.getId()}" />
+	<portlet:param name="bookId" value="${book.getId()}" />
 </portlet:renderURL>
 
 <table border="1">
@@ -16,37 +16,33 @@
 		<th>Email</th>
 		<th></th>
 	</tr>
-	<c:forEach items="${tableRows}" var="row">
-		<c:if test="${row.contains(item)}">
-			<c:forEach items="${row.getNamedElement(\"Authors\")}" var="author">
-				<portlet:actionURL name="removeAuthorForBook" var="removeAuthorForBookURL">
-						<portlet:param name="itemId" value="${item.getId()}"/>
-						<portlet:param name="authorId" value="${author.getId()}"/>
-				</portlet:actionURL>
-				<tr>
-					<td>${author.getParameter("firstName")}</td>
-					<td>${author.getParameter("lastName")}</td>
-					<td>${author.getParameter("birthDate")}</td>
-					<td>${author.getParameter("email")}</td>
-					<td>
-						<a href="${removeAuthorForBookURL}">
-							<button type="button">Remove</button>
-						</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</c:if>
-	</c:forEach>
-	<c:forEach items="${otherAuthors}" var="author">
-		<portlet:actionURL name="addAuthorForBook" var="addAuthorForBookURL">
-			<portlet:param name="itemId" value="${item.getId()}"/>
-			<portlet:param name="authorId" value="${author.getAuthorId()}"/>
+	<c:forEach items="${book.getRelatedAuthors()}" var="currAuthor">
+		<portlet:actionURL name="removeAuthorForBook" var="removeAuthorForBookURL">
+			<portlet:param name="bookId" value="${book.getId()}"/>
+			<portlet:param name="authorId" value="${currAuthor.getAuthorId()}"/>
 		</portlet:actionURL>
 		<tr>
-			<td>${author.getFirstName()}</td>
-			<td>${author.getLastName()}</td>
-			<td>${author.getBirthDate()}</td>
-			<td>${author.getEmail()}</td>
+			<td>${currAuthor.getFirstName()}</td>
+			<td>${currAuthor.getLastName()}</td>
+			<td>${currAuthor.getBirthDate()}</td>
+			<td>${currAuthor.getEmail()}</td>
+			<td>
+				<a href="${removeAuthorForBookURL}">
+					<button type="button">Remove</button>
+				</a>
+			</td>
+		</tr>
+	</c:forEach>
+	<c:forEach items="${otherAuthors}" var="currAuthor">
+		<portlet:actionURL name="addAuthorForBook" var="addAuthorForBookURL">
+			<portlet:param name="bookId" value="${book.getId()}"/>
+			<portlet:param name="authorId" value="${currAuthor.getAuthorId()}"/>
+		</portlet:actionURL>
+		<tr>
+			<td>${currAuthor.getFirstName()}</td>
+			<td>${currAuthor.getLastName()}</td>
+			<td>${currAuthor.getBirthDate()}</td>
+			<td>${currAuthor.getEmail()}</td>
 			<td>
 				<a href="${addAuthorForBookURL}">
 					<button type="button">Add</button>

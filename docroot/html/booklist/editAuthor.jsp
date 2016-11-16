@@ -13,16 +13,16 @@
 <portlet:renderURL var="listURL">
 	<portlet:param name="mvcPath" value="/html/booklist/bookList.jsp"></portlet:param>
 	<portlet:param name="backURL" value="/html/booklist/editAuthor.jsp"/>
-	<portlet:param name="itemId" value="${item.getId()}"/>
+	<portlet:param name="authorId" value="${author.getId()}"/>
 </portlet:renderURL>
 
 <portlet:actionURL name="deleteAuthor" var="deleteURL">
-	<portlet:param name="itemId" value="${item.getId()}"/>
+	<portlet:param name="authorId" value="${author.getId()}"/>
 </portlet:actionURL>
 
 <html>
 
-<c:if test="${item == null}">
+<c:if test="${author == null}">
 	<h1>Add Author</h1>
 	<portlet:actionURL name="addAuthor" var="authorDetails"></portlet:actionURL>
 	<c:set var="firstName" scope="session" value=""/>
@@ -30,15 +30,15 @@
 	<c:set var="birthDate" scope="session" value=""/>
 	<c:set var="email" scope="session" value=""/>	
 </c:if>
-<c:if test="${item != null}">
+<c:if test="${author != null}">
 	<h1>Edit Author</h1>
 	<portlet:actionURL name="updateAuthor" var="authorDetails">
-		<portlet:param name="itemId" value="${item.getId()}"/>
+		<portlet:param name="authorId" value="${author.getId()}"/>
 	</portlet:actionURL>
-	<c:set var="firstName" scope="session" value="${item.getParameter(\"firstName\")}"/>
-	<c:set var="lastName" scope="session" value="${item.getParameter(\"lastName\")}"/>
-	<c:set var="birthDate" scope="session" value="${item.getParameter(\"birthDate\")}"/>
-	<c:set var="email" scope="session" value="${item.getParameter(\"email\")}"/>
+	<c:set var="firstName" scope="session" value="${author.getFirstName()}"/>
+	<c:set var="lastName" scope="session" value="${author.getLastName()}"/>
+	<c:set var="birthDate" scope="session" value="${author.getBirthDate()}"/>
+	<c:set var="email" scope="session" value="${author.getEmail()}"/>
 </c:if>
 
 	<form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
@@ -59,40 +59,40 @@
         <br>
         <input name="<portlet:namespace />email" type="date" value="${email}"></input>
         <br>
-        <c:if test="${item != null}">
+        <c:if test="${author != null}">
         Books
         <a href="${listURL}">
         	<button type="button">Add Book for this Author</button>
         </a>
         <br>
         <table border="1">
-        <c:forEach items="${tableRows}" var="row">
-			<c:if test="${row.contains(item)}">
-				<c:forEach items="${row.getNamedElement(\"Books\")}" var="book">
-					<portlet:renderURL var="editURL">
+				<c:forEach items="${author.getRelatedBooks()}" var="currBook">
+					<portlet:renderURL var="editBookURL">
 						<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
 						<portlet:param name="backURL" value="/html/booklist/editAuthor.jsp"/>
-						<portlet:param name="itemId" value="${book.getId()}" />
+						<portlet:param name="bookId" value="${currBook.getBookId()}" />
 					</portlet:renderURL>
 					<tr>
 						<td>
-							<a href="${editURL}">
-								<c:forEach items="${book.getParameters()}" var="parameter">
-								 	<c:if test="${parameter.isVisible()}">
-								 		${parameter.getValue()}
-								 	</c:if>
-								</c:forEach>
+							<a href="${editBookURL}">
+								<c:if test="${bookPrefs.contains(\"title\"}">
+									${currBook.getTitle()} 
+								</c:if>
+								<c:if test="${bookPrefs.contains(\"ISBN\"}">
+									${currBook.getIsbn()} 
+								</c:if>
+								<c:if test="${bookPrefs.contains(\"releaseDate\"}">
+									${currBook.getReleaseDate()} 
+								</c:if>
 							</a>
 						</td>
 					</tr>
 				</c:forEach>
-			</c:if>
-		</c:forEach>
 		</table>
 		<br>
 		</c:if>
 		<button type="submit">Submit</button>
-		<c:if test="${item != null}">
+		<c:if test="${author != null}">
 			<a href="${deleteURL}">
 				<button type="button">Delete this Author</button>
 			</a>
