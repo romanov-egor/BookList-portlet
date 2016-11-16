@@ -40,7 +40,8 @@ import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
 public class BookList extends MVCPortlet {
 	
 	/**
-	 * Adds new {@link com.softwerke.docs.booklist.model.Book Book} instance in database 
+	 * Adds new {@link com.softwerke.docs.booklist.model.Book Book} instance 
+	 * in database 
 	 * @param request - Action Request
 	 * @param response - Action Response
 	 * @throws PortalException
@@ -69,7 +70,8 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Updates existing {@link com.softwerke.docs.booklist.model.Book Book} instance in database
+	 * Updates existing {@link com.softwerke.docs.booklist.model.Book Book} instance 
+	 * in database
 	 * @param request - Action Request
 	 * @param response - Action Response
 	 * @throws PortalException
@@ -105,7 +107,8 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Links {@link com.softwerke.docs.booklist.model.Author Author} to {@link com.softwerke.docs.booklist.model.Book Book}<br>
+	 * Links {@link com.softwerke.docs.booklist.model.Author Author} to 
+	 * {@link com.softwerke.docs.booklist.model.Book Book}<br>
 	 * Uses {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil}
 	 * @param request - Action Request
 	 * @param response - Action Response
@@ -140,7 +143,8 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Removes link between {@link com.softwerke.docs.booklist.model.Author Author} and {@link com.softwerke.docs.booklist.model.Book Book}<br>
+	 * Removes link between {@link com.softwerke.docs.booklist.model.Author Author} 
+	 * and {@link com.softwerke.docs.booklist.model.Book Book}<br>
 	 * Uses {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil}
 	 * @param request - Action Request
 	 * @param response - Action Response
@@ -175,7 +179,8 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Removes {@link com.softwerke.docs.booklist.model.Book Book} instance from database
+	 * Removes {@link com.softwerke.docs.booklist.model.Book Book} instance 
+	 * from database
 	 * @param request - Action Request
 	 * @param response - Action Response
 	 * @throws PortalException
@@ -198,7 +203,8 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance in database 
+	 * Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance 
+	 * in database 
 	 * @param request - Action Request
 	 * @param response - Action Response
 	 * @throws PortalException
@@ -228,7 +234,8 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Updates existing {@link com.softwerke.docs.booklist.model.Author Author} instance in database
+	 * Updates existing {@link com.softwerke.docs.booklist.model.Author Author} 
+	 * instance in database
 	 * @param request - Action Request
 	 * @param response - Action Response
 	 * @throws PortalException
@@ -264,7 +271,8 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Links {@link com.softwerke.docs.booklist.model.Book Book} to {@link com.softwerke.docs.booklist.model.Author Author}<br>
+	 * Links {@link com.softwerke.docs.booklist.model.Book Book} to 
+	 * {@link com.softwerke.docs.booklist.model.Author Author}<br>
 	 * Uses {@link com.softwerke.docs.booklist.service.AuthorLocalServiceUtil}
 	 * @param request - Action Request
 	 * @param response - Action Response
