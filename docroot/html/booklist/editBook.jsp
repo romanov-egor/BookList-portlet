@@ -55,7 +55,7 @@
         <c:if test="${book != null}">
         Authors
         <a href="${listURL}">
-        	<button type="button">Add Author for this Book</button>
+        	<button type="button">Open Author list</button>
         </a>
         <br>
         <table border="1">

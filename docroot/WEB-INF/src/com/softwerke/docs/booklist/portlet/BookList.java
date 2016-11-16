@@ -35,9 +35,19 @@ import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
 
 /**
  * Portlet implementation class BookList
+ * @author Romanov Egor
  */
 public class BookList extends MVCPortlet {
 	
+	/**
+	 * Adds new {@link com.softwerke.docs.booklist.model.Book Book} instance in database 
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
 	public void addBook(ActionRequest request, ActionResponse response)
 	        throws PortalException, SystemException {
 
@@ -58,6 +68,15 @@ public class BookList extends MVCPortlet {
 	    }
 	}
 	
+	/**
+	 * Updates existing {@link com.softwerke.docs.booklist.model.Book Book} instance in database
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
 	public void updateBook(ActionRequest request, ActionResponse response)
 	        throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
@@ -85,7 +104,17 @@ public class BookList extends MVCPortlet {
 		        }
 	}
 	
-	public void addAuthorForBook(ActionRequest request, ActionResponse response)
+	/**
+	 * Links {@link com.softwerke.docs.booklist.model.Author Author} to {@link com.softwerke.docs.booklist.model.Book Book}<br>
+	 * Uses {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil}
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
+	public void bindAuthorToBook(ActionRequest request, ActionResponse response)
 	        throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 		        Book.class.getName(), request);
@@ -112,6 +141,16 @@ public class BookList extends MVCPortlet {
 		        }
 	}
 	
+	/**
+	 * Removes link between {@link com.softwerke.docs.booklist.model.Author Author} and {@link com.softwerke.docs.booklist.model.Book Book}<br>
+	 * Uses {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil}
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
 	public void removeAuthorForBook(ActionRequest request, ActionResponse response)
 	        throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
@@ -139,6 +178,15 @@ public class BookList extends MVCPortlet {
 		        }
 	}
 	
+	/**
+	 * Removes {@link com.softwerke.docs.booklist.model.Book Book} instance from database
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
 	public void deleteBook(ActionRequest request, ActionResponse response)
 			throws PortalException, SystemException {
 		
@@ -153,6 +201,15 @@ public class BookList extends MVCPortlet {
 		        }
 	}
 	
+	/**
+	 * Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance in database 
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
 	public void addAuthor(ActionRequest request, ActionResponse response)
 	        throws PortalException, SystemException {
 
@@ -174,6 +231,15 @@ public class BookList extends MVCPortlet {
 	    }
 	}
 	
+	/**
+	 * Updates existing {@link com.softwerke.docs.booklist.model.Author Author} instance in database
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
 	public void updateAuthor(ActionRequest request, ActionResponse response)
 	        throws PortalException, SystemException {
 
@@ -202,6 +268,16 @@ public class BookList extends MVCPortlet {
 	    }
 	}
 	
+	/**
+	 * Links {@link com.softwerke.docs.booklist.model.Book Book} to {@link com.softwerke.docs.booklist.model.Author Author}<br>
+	 * Uses {@link com.softwerke.docs.booklist.service.AuthorLocalServiceUtil}
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
 	public void addBookForAuthor (ActionRequest request, ActionResponse response) 
 			throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
@@ -229,6 +305,16 @@ public class BookList extends MVCPortlet {
 		        }
 	}
 	
+	/**
+	 * Removes link between {@link com.softwerke.docs.booklist.model.Book Book} and {@link com.softwerke.docs.booklist.model.Book Book}<br>
+	 * Uses {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil}
+	 * @param request - Action Request
+	 * @param response - Action Response
+	 * @throws PortalException
+	 * @throws SystemException
+	 * @see javax.portlet.ActionRequest
+	 * @see javax.portlet.ActionResponse
+	 */
 	public void removeBookForAuthor (ActionRequest request, ActionResponse response) 
 			throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(

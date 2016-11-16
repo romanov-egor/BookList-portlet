@@ -7,14 +7,17 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.softwerke.docs.booklist.model.Author;
 import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
 
+/**
+ * Model class for {@link com.softwerke.docs.booklist.model.Author Author}
+ * @author Romanov Egor
+ */
 public class AuthorItem {
-	
-	long Id;
-	String firstName;
-	String lastName;
-	Date birthDate;
-	String email;
-	ArrayList<Book> relatedBooks;
+	private long Id;
+	private String firstName;
+	private String lastName;
+	private Date birthDate;
+	private String email;
+	private ArrayList<Book> relatedBooks;
 
 	public AuthorItem(Author author) throws PortalException, SystemException {
 		this.Id = author.getAuthorId();
@@ -22,55 +25,31 @@ public class AuthorItem {
 		this.lastName = author.getLastName();
 		this.birthDate = author.getBirthDate();
 		this.email = author.getEmail();
-		this.relatedBooks = new ArrayList<Book>(AuthorLocalServiceUtil.getBooksByAuthor(this.Id));
+		this.relatedBooks = new ArrayList<Book>(
+				AuthorLocalServiceUtil.getBooksByAuthor(this.Id));
 	}
 
 	public long getId() {
 		return Id;
 	}
 
-	public void setId(long id) {
-		Id = id;
-	}
-
 	public String getFirstName() {
 		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
 	}
 
 	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
 	public Date getBirthDate() {
 		return birthDate;
-	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public ArrayList<Book> getRelatedBooks() {
 		return relatedBooks;
 	}
-
-	public void setRelatedBooks(List<Book> relatedBooks) {
-		this.relatedBooks = new ArrayList<Book>(relatedBooks);
-	}
-
 }
