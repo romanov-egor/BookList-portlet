@@ -205,25 +205,21 @@ public class BookLocalServiceClp implements BookLocalService {
 
 		_methodParameterTypes39 = new String[] { "long" };
 
-		_methodName40 = "getBooks";
+		_methodName40 = "getBooksByAuthor";
 
-		_methodParameterTypes40 = new String[] { "long", "int", "int" };
+		_methodParameterTypes40 = new String[] { "long" };
 
-		_methodName41 = "getAuthorsByBook";
+		_methodName41 = "addBook";
 
-		_methodParameterTypes41 = new String[] { "long" };
-
-		_methodName42 = "addBook";
-
-		_methodParameterTypes42 = new String[] {
+		_methodParameterTypes41 = new String[] {
 				"java.lang.String", "java.lang.String", "java.util.Date",
 				"java.util.List", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName43 = "updateBook";
+		_methodName42 = "updateBook";
 
-		_methodParameterTypes43 = new String[] {
+		_methodParameterTypes42 = new String[] {
 				"long", "java.lang.String", "java.lang.String", "java.util.Date",
 				"java.util.List", "long",
 				"com.liferay.portal.service.ServiceContext"
@@ -1369,15 +1365,14 @@ public class BookLocalServiceClp implements BookLocalService {
 	}
 
 	@Override
-	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooks(
-		long groupId, int start, int end)
+	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooksByAuthor(
+		long authorId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName40,
-					_methodParameterTypes40,
-					new Object[] { groupId, start, end });
+					_methodParameterTypes40, new Object[] { authorId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -1399,40 +1394,6 @@ public class BookLocalServiceClp implements BookLocalService {
 	}
 
 	@Override
-	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthorsByBook(
-		long bookId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName41,
-					_methodParameterTypes41, new Object[] { bookId });
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (java.util.List<com.softwerke.docs.booklist.model.Author>)ClpSerializer.translateOutput(returnObj);
-	}
-
-	@Override
 	public com.softwerke.docs.booklist.model.Book addBook(
 		java.lang.String title, java.lang.String ISBN,
 		java.util.Date releaseDate,
@@ -1443,8 +1404,8 @@ public class BookLocalServiceClp implements BookLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName42,
-					_methodParameterTypes42,
+			returnObj = _invokableLocalService.invokeMethod(_methodName41,
+					_methodParameterTypes41,
 					new Object[] {
 						ClpSerializer.translateInput(title),
 						
@@ -1493,8 +1454,8 @@ public class BookLocalServiceClp implements BookLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName43,
-					_methodParameterTypes43,
+			returnObj = _invokableLocalService.invokeMethod(_methodName42,
+					_methodParameterTypes42,
 					new Object[] {
 						bookId,
 						
@@ -1619,6 +1580,4 @@ public class BookLocalServiceClp implements BookLocalService {
 	private String[] _methodParameterTypes41;
 	private String _methodName42;
 	private String[] _methodParameterTypes42;
-	private String _methodName43;
-	private String[] _methodParameterTypes43;
 }

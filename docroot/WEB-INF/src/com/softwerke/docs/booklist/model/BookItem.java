@@ -5,7 +5,7 @@ import java.util.*;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.softwerke.docs.booklist.model.Book;
-import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
+import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
 
 /**
  * Model class for {@link com.softwerke.docs.booklist.model.Book Book}
@@ -24,7 +24,7 @@ public class BookItem {
 		this.ISBN = book.getIsbn();
 		this.releaseDate = book.getReleaseDate();
 		this.relatedAuthors = new ArrayList<Author>(
-				BookLocalServiceUtil.getAuthorsByBook(this.Id));
+				AuthorLocalServiceUtil.getAuthorsByBook(this.Id));
 	}
 
 	public long getId() {

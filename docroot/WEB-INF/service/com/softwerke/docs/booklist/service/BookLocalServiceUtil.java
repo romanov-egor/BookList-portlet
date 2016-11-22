@@ -480,24 +480,13 @@ public class BookLocalServiceUtil {
 
 	/**
 	* Returns {@link java.util.List List} of
-	* {@link com.softwerke.docs.booklist.model.Book Books}
+	* {@link com.softwerke.docs.booklist.model.Book Book} related to a
+	* {@link com.softwerke.docs.booklist.model.Author Author}
 	*/
-	public static java.util.List<com.softwerke.docs.booklist.model.Book> getBooks(
-		long groupId, int start, int end)
+	public static java.util.List<com.softwerke.docs.booklist.model.Book> getBooksByAuthor(
+		long authorId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().getBooks(groupId, start, end);
-	}
-
-	/**
-	* Returns {@link java.util.List List} of
-	* {@link com.softwerke.docs.booklist.model.Author Authors} related to a
-	* {@link com.softwerke.docs.booklist.model.Book Book}
-	*/
-	public static java.util.List<com.softwerke.docs.booklist.model.Author> getAuthorsByBook(
-		long bookId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getAuthorsByBook(bookId);
+		return getService().getBooksByAuthor(authorId);
 	}
 
 	/**

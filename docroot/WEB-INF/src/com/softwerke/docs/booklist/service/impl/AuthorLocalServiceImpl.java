@@ -58,23 +58,23 @@ public class AuthorLocalServiceImpl extends AuthorLocalServiceBaseImpl {
 	    return authorPersistence.findByGroupId(groupId);
 	}
 	
-	/**
-	 * Returns {@link java.util.List List} of 
-	 * {@link com.softwerke.docs.booklist.model.Author Authors}
-	 */
-	public List<Author> getAuthors (long groupId, int start, int end)
-	   throws SystemException {
-	    return authorPersistence.findByGroupId(groupId, start, end);
-	}
+//	/**
+//	 * Returns {@link java.util.List List} of 
+//	 * {@link com.softwerke.docs.booklist.model.Author Authors}
+//	 */
+//	public List<Author> getAuthors(long groupId, int start, int end)
+//	   throws SystemException {
+//	    return authorPersistence.findByGroupId(groupId, start, end);
+//	}
 	
 	/**
 	 * Returns {@link java.util.List List} of 
 	 * {@link com.softwerke.docs.booklist.model.Book Books} related to an
 	 * {@link com.softwerke.docs.booklist.model.Author Author}
 	 */
-	public List<Book> getBooksByAuthor(long authorId)
-		    throws PortalException, SystemException {
-	    return authorPersistence.getBooks(authorId);
+	public List<Author> getAuthorsByBook(long bookId)
+		    throws SystemException {
+	    return bookPersistence.getAuthors(bookId);
 	}
 	
 	/**

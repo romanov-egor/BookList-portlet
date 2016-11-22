@@ -509,26 +509,13 @@ public class AuthorLocalServiceWrapper implements AuthorLocalService,
 
 	/**
 	* Returns {@link java.util.List List} of
-	* {@link com.softwerke.docs.booklist.model.Author Authors}
-	*/
-	@Override
-	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthors(
-		long groupId, int start, int end)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _authorLocalService.getAuthors(groupId, start, end);
-	}
-
-	/**
-	* Returns {@link java.util.List List} of
 	* {@link com.softwerke.docs.booklist.model.Book Books} related to an
 	* {@link com.softwerke.docs.booklist.model.Author Author}
 	*/
 	@Override
-	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooksByAuthor(
-		long authorId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return _authorLocalService.getBooksByAuthor(authorId);
+	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthorsByBook(
+		long bookId) throws com.liferay.portal.kernel.exception.SystemException {
+		return _authorLocalService.getAuthorsByBook(bookId);
 	}
 
 	/**

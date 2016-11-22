@@ -8,12 +8,14 @@
 
 <portlet:renderURL var="viewURL">
 	<portlet:param name="mvcPath" value="/html/booklist/view.jsp"></portlet:param>
+	<portlet:param name="mode" value="view" />
 </portlet:renderURL>
 
 <portlet:renderURL var="listURL">
 	<portlet:param name="mvcPath" value="/html/booklist/authorList.jsp"></portlet:param>
 	<portlet:param name="backURL" value="/html/booklist/editBook.jsp"/>
 	<portlet:param name="bookId" value="${book.getId()}"/>
+	<portlet:param name="mode" value="authorList" />
 </portlet:renderURL>
 
 <portlet:actionURL name="deleteBook" var="deleteURL">
@@ -64,6 +66,7 @@
 						<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
 						<portlet:param name="backURL" value="/html/booklist/editBook.jsp"/>
 						<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
+						<portlet:param name="mode" value="editAuthor" />
 					</portlet:renderURL>
 					<tr>
 						<td>

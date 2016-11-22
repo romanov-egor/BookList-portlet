@@ -5,7 +5,7 @@ import java.util.*;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.softwerke.docs.booklist.model.Author;
-import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
+import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
 
 /**
  * Model class for {@link com.softwerke.docs.booklist.model.Author Author}
@@ -19,14 +19,14 @@ public class AuthorItem {
 	private String email;
 	private ArrayList<Book> relatedBooks;
 
-	public AuthorItem(Author author) throws PortalException, SystemException {
+	public AuthorItem(Author author) throws SystemException, PortalException {
 		this.Id = author.getAuthorId();
 		this.firstName = author.getFirstName();
 		this.lastName = author.getLastName();
 		this.birthDate = author.getBirthDate();
 		this.email = author.getEmail();
 		this.relatedBooks = new ArrayList<Book>(
-				AuthorLocalServiceUtil.getBooksByAuthor(this.Id));
+				BookLocalServiceUtil.getBooksByAuthor(this.Id));
 	}
 
 	public long getId() {

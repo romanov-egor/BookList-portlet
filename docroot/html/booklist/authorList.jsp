@@ -6,6 +6,7 @@
 <portlet:renderURL var="backURL">
 	<portlet:param name="mvcPath" value="${backURL}"></portlet:param>
 	<portlet:param name="bookId" value="${book.getId()}" />
+	<portlet:param name="mode" value="editBook" />
 </portlet:renderURL>
 
 <table border="1">

@@ -205,33 +205,29 @@ public class BookLocalServiceClpInvoker {
 
 		_methodParameterTypes64 = new String[] { "long" };
 
-		_methodName65 = "getBooks";
+		_methodName65 = "getBooksByAuthor";
 
-		_methodParameterTypes65 = new String[] { "long", "int", "int" };
+		_methodParameterTypes65 = new String[] { "long" };
 
-		_methodName66 = "getAuthorsByBook";
+		_methodName67 = "addBook";
 
-		_methodParameterTypes66 = new String[] { "long" };
-
-		_methodName68 = "addBook";
-
-		_methodParameterTypes68 = new String[] {
+		_methodParameterTypes67 = new String[] {
 				"java.lang.String", "java.lang.String", "java.util.Date",
 				"java.util.List", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName69 = "updateBook";
+		_methodName68 = "updateBook";
 
-		_methodParameterTypes69 = new String[] {
+		_methodParameterTypes68 = new String[] {
 				"long", "java.lang.String", "java.lang.String", "java.util.Date",
 				"java.util.List", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName70 = "deleteBook";
+		_methodName69 = "deleteBook";
 
-		_methodParameterTypes70 = new String[] { "long" };
+		_methodParameterTypes69 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -481,18 +477,11 @@ public class BookLocalServiceClpInvoker {
 
 		if (_methodName65.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes65, parameterTypes)) {
-			return BookLocalServiceUtil.getBooks(((Long)arguments[0]).longValue(),
-				((Integer)arguments[1]).intValue(),
-				((Integer)arguments[2]).intValue());
+			return BookLocalServiceUtil.getBooksByAuthor(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName66.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes66, parameterTypes)) {
-			return BookLocalServiceUtil.getAuthorsByBook(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName68.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes68, parameterTypes)) {
+		if (_methodName67.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes67, parameterTypes)) {
 			return BookLocalServiceUtil.addBook((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.util.Date)arguments[2],
 				(java.util.List<com.softwerke.docs.booklist.model.Author>)arguments[3],
@@ -500,8 +489,8 @@ public class BookLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[5]);
 		}
 
-		if (_methodName69.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes69, parameterTypes)) {
+		if (_methodName68.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes68, parameterTypes)) {
 			return BookLocalServiceUtil.updateBook(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.util.Date)arguments[3],
@@ -510,8 +499,8 @@ public class BookLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[6]);
 		}
 
-		if (_methodName70.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes70, parameterTypes)) {
+		if (_methodName69.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes69, parameterTypes)) {
 			return BookLocalServiceUtil.deleteBook(((Long)arguments[0]).longValue());
 		}
 
@@ -598,12 +587,10 @@ public class BookLocalServiceClpInvoker {
 	private String[] _methodParameterTypes64;
 	private String _methodName65;
 	private String[] _methodParameterTypes65;
-	private String _methodName66;
-	private String[] _methodParameterTypes66;
+	private String _methodName67;
+	private String[] _methodParameterTypes67;
 	private String _methodName68;
 	private String[] _methodParameterTypes68;
 	private String _methodName69;
 	private String[] _methodParameterTypes69;
-	private String _methodName70;
-	private String[] _methodParameterTypes70;
 }

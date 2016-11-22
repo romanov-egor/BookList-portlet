@@ -6,10 +6,12 @@
 <portlet:renderURL var="addBookURL">
 	<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
 	<portlet:param name="bookId" value="-1" />
+	<portlet:param name="mode" value="editBook" />
 </portlet:renderURL>
 <portlet:renderURL var="addAuthorURL">
 	<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
 	<portlet:param name="authorId" value="-1" />
+	<portlet:param name="mode" value="editAuthor" />
 </portlet:renderURL>
 
 <html>
@@ -33,6 +35,7 @@
 						<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
 						<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
 						<portlet:param name="bookId" value="${currBook.getId()}" />
+						<portlet:param name="mode" value="editBook" />
 					</portlet:renderURL>
 					<a href="${editBookURL}">
 						<c:if test="${bookPrefs.contains(\"title\")}">
@@ -56,6 +59,7 @@
 									<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
 									<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
 									<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
+									<portlet:param name="mode" value="editAuthor" />
 								</portlet:renderURL>
 								<a href="${editAuthorURL}">
 									<c:if test="${authorPrefs.contains(\"firstName\")}">

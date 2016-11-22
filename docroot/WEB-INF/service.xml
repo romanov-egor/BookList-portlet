@@ -21,6 +21,7 @@
 		<column name="userName" type="String"></column>
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
+		
         <column name="title" type="String"></column>
         <column name="isbn" type="String"></column>
         <column name="releaseDate" type="Date"></column>
@@ -50,6 +51,7 @@
 		<column name="userName" type="String"></column>
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
+		
         <column name="firstName" type="String"></column>
         <column name="lastName" type="String"></column>
         <column name="birthDate" type="Date"></column>

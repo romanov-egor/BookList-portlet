@@ -426,23 +426,12 @@ public interface AuthorLocalService extends BaseLocalService,
 
 	/**
 	* Returns {@link java.util.List List} of
-	* {@link com.softwerke.docs.booklist.model.Author Authors}
-	*/
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthors(
-		long groupId, int start, int end)
-		throws com.liferay.portal.kernel.exception.SystemException;
-
-	/**
-	* Returns {@link java.util.List List} of
 	* {@link com.softwerke.docs.booklist.model.Book Books} related to an
 	* {@link com.softwerke.docs.booklist.model.Author Author}
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooksByAuthor(
-		long authorId)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException;
+	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthorsByBook(
+		long bookId) throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
 	* Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance

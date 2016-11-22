@@ -205,33 +205,29 @@ public class AuthorLocalServiceClpInvoker {
 
 		_methodParameterTypes64 = new String[] { "long" };
 
-		_methodName65 = "getAuthors";
+		_methodName65 = "getAuthorsByBook";
 
-		_methodParameterTypes65 = new String[] { "long", "int", "int" };
+		_methodParameterTypes65 = new String[] { "long" };
 
-		_methodName66 = "getBooksByAuthor";
+		_methodName67 = "addAuthor";
 
-		_methodParameterTypes66 = new String[] { "long" };
-
-		_methodName68 = "addAuthor";
-
-		_methodParameterTypes68 = new String[] {
+		_methodParameterTypes67 = new String[] {
 				"java.lang.String", "java.lang.String", "java.util.Date",
 				"java.lang.String", "java.util.List", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName69 = "updateAuthor";
+		_methodName68 = "updateAuthor";
 
-		_methodParameterTypes69 = new String[] {
+		_methodParameterTypes68 = new String[] {
 				"long", "java.lang.String", "java.lang.String", "java.util.Date",
 				"java.lang.String", "java.util.List", "long",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName70 = "deleteAuthor";
+		_methodName69 = "deleteAuthor";
 
-		_methodParameterTypes70 = new String[] { "long" };
+		_methodParameterTypes69 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -481,18 +477,11 @@ public class AuthorLocalServiceClpInvoker {
 
 		if (_methodName65.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes65, parameterTypes)) {
-			return AuthorLocalServiceUtil.getAuthors(((Long)arguments[0]).longValue(),
-				((Integer)arguments[1]).intValue(),
-				((Integer)arguments[2]).intValue());
+			return AuthorLocalServiceUtil.getAuthorsByBook(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName66.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes66, parameterTypes)) {
-			return AuthorLocalServiceUtil.getBooksByAuthor(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName68.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes68, parameterTypes)) {
+		if (_methodName67.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes67, parameterTypes)) {
 			return AuthorLocalServiceUtil.addAuthor((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.util.Date)arguments[2],
 				(java.lang.String)arguments[3],
@@ -501,8 +490,8 @@ public class AuthorLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[6]);
 		}
 
-		if (_methodName69.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes69, parameterTypes)) {
+		if (_methodName68.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes68, parameterTypes)) {
 			return AuthorLocalServiceUtil.updateAuthor(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.util.Date)arguments[3], (java.lang.String)arguments[4],
@@ -511,8 +500,8 @@ public class AuthorLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[7]);
 		}
 
-		if (_methodName70.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes70, parameterTypes)) {
+		if (_methodName69.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes69, parameterTypes)) {
 			return AuthorLocalServiceUtil.deleteAuthor(((Long)arguments[0]).longValue());
 		}
 
@@ -599,12 +588,10 @@ public class AuthorLocalServiceClpInvoker {
 	private String[] _methodParameterTypes64;
 	private String _methodName65;
 	private String[] _methodParameterTypes65;
-	private String _methodName66;
-	private String[] _methodParameterTypes66;
+	private String _methodName67;
+	private String[] _methodParameterTypes67;
 	private String _methodName68;
 	private String[] _methodParameterTypes68;
 	private String _methodName69;
 	private String[] _methodParameterTypes69;
-	private String _methodName70;
-	private String[] _methodParameterTypes70;
 }
