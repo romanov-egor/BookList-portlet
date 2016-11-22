@@ -497,6 +497,10 @@ public class BookLocalServiceWrapper implements BookLocalService,
 		return _bookLocalService.invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Book Books}
+	*/
 	@Override
 	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooks(
 		long groupId)
@@ -504,6 +508,10 @@ public class BookLocalServiceWrapper implements BookLocalService,
 		return _bookLocalService.getBooks(groupId);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Book Books}
+	*/
 	@Override
 	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooks(
 		long groupId, int start, int end)
@@ -511,6 +519,11 @@ public class BookLocalServiceWrapper implements BookLocalService,
 		return _bookLocalService.getBooks(groupId, start, end);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Author Authors} related to a
+	* {@link com.softwerke.docs.booklist.model.Book Book}
+	*/
 	@Override
 	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthorsByBook(
 		long bookId)
@@ -519,6 +532,10 @@ public class BookLocalServiceWrapper implements BookLocalService,
 		return _bookLocalService.getAuthorsByBook(bookId);
 	}
 
+	/**
+	* Adds new {@link com.softwerke.docs.booklist.model.Book Book} instance in
+	* database
+	*/
 	@Override
 	public com.softwerke.docs.booklist.model.Book addBook(
 		java.lang.String title, java.lang.String ISBN,
@@ -531,6 +548,10 @@ public class BookLocalServiceWrapper implements BookLocalService,
 			userId, serviceContext);
 	}
 
+	/**
+	* Updates existing {@link com.softwerke.docs.booklist.model.Book Book}
+	* instance in database
+	*/
 	@Override
 	public com.softwerke.docs.booklist.model.Book updateBook(long bookId,
 		java.lang.String newTitle, java.lang.String newISBN,

@@ -125,25 +125,6 @@ public abstract class AuthorServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
-	 * Returns the book remote service.
-	 *
-	 * @return the book remote service
-	 */
-	public com.softwerke.docs.booklist.service.BookService getBookService() {
-		return bookService;
-	}
-
-	/**
-	 * Sets the book remote service.
-	 *
-	 * @param bookService the book remote service
-	 */
-	public void setBookService(
-		com.softwerke.docs.booklist.service.BookService bookService) {
-		this.bookService = bookService;
-	}
-
-	/**
 	 * Returns the book persistence.
 	 *
 	 * @return the book persistence
@@ -340,8 +321,6 @@ public abstract class AuthorServiceBaseImpl extends BaseServiceImpl
 	protected AuthorPersistence authorPersistence;
 	@BeanReference(type = com.softwerke.docs.booklist.service.BookLocalService.class)
 	protected com.softwerke.docs.booklist.service.BookLocalService bookLocalService;
-	@BeanReference(type = com.softwerke.docs.booklist.service.BookService.class)
-	protected com.softwerke.docs.booklist.service.BookService bookService;
 	@BeanReference(type = BookPersistence.class)
 	protected BookPersistence bookPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)

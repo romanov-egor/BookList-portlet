@@ -40,7 +40,7 @@ import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
 public class BookList extends MVCPortlet {
 	
 	/**
-	 * Adds new {@link com.softwerke.docs.booklist.model.Book Book} instance 
+	 * Gather information from request and adds new {@link com.softwerke.docs.booklist.model.Book Book} instance 
 	 * in database 
 	 * @param request - Action Request
 	 * @param response - Action Response
@@ -70,7 +70,7 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Updates existing {@link com.softwerke.docs.booklist.model.Book Book} instance 
+	 * Gathers information from request and updates existing {@link com.softwerke.docs.booklist.model.Book Book} instance 
 	 * in database
 	 * @param request - Action Request
 	 * @param response - Action Response
@@ -179,7 +179,7 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Removes {@link com.softwerke.docs.booklist.model.Book Book} instance 
+	 * Gathers information from request and removes {@link com.softwerke.docs.booklist.model.Book Book} instance 
 	 * from database
 	 * @param request - Action Request
 	 * @param response - Action Response
@@ -203,7 +203,7 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance 
+	 * Gather information from request and adds new {@link com.softwerke.docs.booklist.model.Author Author} instance 
 	 * in database 
 	 * @param request - Action Request
 	 * @param response - Action Response
@@ -234,7 +234,7 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Updates existing {@link com.softwerke.docs.booklist.model.Author Author} 
+	 * Gathers information from request and updates existing {@link com.softwerke.docs.booklist.model.Author Author} 
 	 * instance in database
 	 * @param request - Action Request
 	 * @param response - Action Response
@@ -343,7 +343,7 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Removes {@link com.softwerke.docs.booklist.model.Author Author} instance 
+	 * Gathers information from request and removes {@link com.softwerke.docs.booklist.model.Author Author} instance 
 	 * from database
 	 * @param request - Action Request
 	 * @param response - Action Response

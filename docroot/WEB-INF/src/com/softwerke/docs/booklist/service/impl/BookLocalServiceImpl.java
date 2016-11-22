@@ -39,7 +39,7 @@ import com.softwerke.docs.booklist.service.base.BookLocalServiceBaseImpl;
  * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
  * </p>
  *
- * @author rei
+ * @author Romanov Egor
  * @see com.softwerke.docs.booklist.service.base.BookLocalServiceBaseImpl
  * @see com.softwerke.docs.booklist.service.BookLocalServiceUtil
  */
@@ -50,21 +50,41 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 	 * Never reference this interface directly. Always use {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil} to access the book local service.
 	 */
 	
+	/**
+	 * Returns {@link java.util.List List} of 
+	 * {@link com.softwerke.docs.booklist.model.Book Books}
+	 */
 	public List<Book> getBooks (long groupId) throws SystemException {
 	    return bookPersistence.findByGroupId(groupId);
 	}
-
+	
+	/**
+	 * Returns {@link java.util.List List} of 
+	 * {@link com.softwerke.docs.booklist.model.Book Books}
+	 */
 	public List<Book> getBooks (long groupId, int start, int end)
 	   throws SystemException {
 	    return bookPersistence.findByGroupId(groupId, start, end);
 	}
 	
+	/**
+	 * Returns {@link java.util.List List} of 
+	 * {@link com.softwerke.docs.booklist.model.Author Authors} related to a
+	 * {@link com.softwerke.docs.booklist.model.Book Book}
+	 */
 	public List<Author> getAuthorsByBook(long bookId)
 		    throws PortalException, SystemException {
-
-		    return bookPersistence.getAuthors(bookId);
-		}
+		return bookPersistence.getAuthors(bookId);
+	}
 	
+	/**
+	 * Validates {@link com.softwerke.docs.booklist.model.Book Book's}
+	 * title, ISBN and release date
+	 * @param title
+	 * @param ISBN
+	 * @param releaseDate
+	 * @throws PortalException
+	 */
 	protected void validate(String title, String ISBN, Date releaseDate) 
 	        throws PortalException {
 	    if (Validator.isNull(title)) {
@@ -80,17 +100,21 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 	    }
 	}
 	
+	/**
+	 * Adds new {@link com.softwerke.docs.booklist.model.Book Book} instance in
+	 * database
+	 */
 	public Book addBook(String title, String ISBN, Date releaseDate, 
 			List<Author> authors, long userId, ServiceContext serviceContext)
 	        throws PortalException, SystemException {
 	    long groupId = serviceContext.getScopeGroupId();
 	    User user = userPersistence.findByPrimaryKey(userId);
 	    Date now = new Date();
-
-	    validate(title, ISBN, releaseDate);
-
 	    long bookId = counterLocalService.increment();
 	    Book book = bookPersistence.create(bookId);
+	    
+	    validate(title, ISBN, releaseDate);
+
 	    book.setUuid(serviceContext.getUuid());
 	    book.setUserId(userId);
 	    book.setGroupId(groupId);
@@ -106,20 +130,24 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 	    	bookPersistence.addAuthors(book.getPrimaryKey(), authors);
 	    }
 	    bookPersistence.update(book);
-
 	    return book;
 	}
 	
-	public Book updateBook(long bookId, String newTitle, String newISBN, Date newReleaseDate, 
-			List<Author> newAuthors, long userId, ServiceContext serviceContext) 
+	/**
+	 * Updates existing {@link com.softwerke.docs.booklist.model.Book Book} 
+	 * instance in database
+	 */
+	public Book updateBook(long bookId, String newTitle, String newISBN, 
+			Date newReleaseDate, List<Author> newAuthors, long userId, 
+			ServiceContext serviceContext) 
 			throws PortalException, SystemException {
 		
 		Date now = new Date();
 		User user = userPersistence.findByPrimaryKey(userId);
+		Book book = bookPersistence.findByPrimaryKey(bookId);
 		
 		validate(newTitle, newISBN, newReleaseDate);
 		
-		Book book = bookPersistence.findByPrimaryKey(bookId);
 		book.setUuid(serviceContext.getUuid());
 		book.setUserId(userId);
 		book.setCompanyId(user.getCompanyId());
@@ -137,9 +165,14 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 		return book;
 	}
 	
+	/**
+	 * Removes {@link com.softwerke.docs.booklist.model.Book Book} instance 
+	 * from database
+	 */
 	public Book deleteBook(long bookId) 
 			throws PortalException, SystemException {
 		Book book = bookPersistence.findByPrimaryKey(bookId);
+		
 	    bookPersistence.clearAuthors(bookId);
 		bookPersistence.remove(book);
 		return book;

@@ -24,24 +24,24 @@ import java.util.Arrays;
  */
 public class AuthorServiceClpInvoker {
 	public AuthorServiceClpInvoker() {
-		_methodName24 = "getBeanIdentifier";
+		_methodName22 = "getBeanIdentifier";
 
-		_methodParameterTypes24 = new String[] {  };
+		_methodParameterTypes22 = new String[] {  };
 
-		_methodName25 = "setBeanIdentifier";
+		_methodName23 = "setBeanIdentifier";
 
-		_methodParameterTypes25 = new String[] { "java.lang.String" };
+		_methodParameterTypes23 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
-		if (_methodName24.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes24, parameterTypes)) {
+		if (_methodName22.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes22, parameterTypes)) {
 			return AuthorServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName25.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes25, parameterTypes)) {
+		if (_methodName23.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes23, parameterTypes)) {
 			AuthorServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -50,8 +50,8 @@ public class AuthorServiceClpInvoker {
 		throw new UnsupportedOperationException();
 	}
 
-	private String _methodName24;
-	private String[] _methodParameterTypes24;
-	private String _methodName25;
-	private String[] _methodParameterTypes25;
+	private String _methodName22;
+	private String[] _methodParameterTypes22;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
 }

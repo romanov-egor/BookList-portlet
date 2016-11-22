@@ -470,18 +470,31 @@ public class AuthorLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Author Authors}
+	*/
 	public static java.util.List<com.softwerke.docs.booklist.model.Author> getAuthors(
 		long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().getAuthors(groupId);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Author Authors}
+	*/
 	public static java.util.List<com.softwerke.docs.booklist.model.Author> getAuthors(
 		long groupId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().getAuthors(groupId, start, end);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Book Books} related to an
+	* {@link com.softwerke.docs.booklist.model.Author Author}
+	*/
 	public static java.util.List<com.softwerke.docs.booklist.model.Book> getBooksByAuthor(
 		long authorId)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -489,6 +502,10 @@ public class AuthorLocalServiceUtil {
 		return getService().getBooksByAuthor(authorId);
 	}
 
+	/**
+	* Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance
+	* in database
+	*/
 	public static com.softwerke.docs.booklist.model.Author addAuthor(
 		java.lang.String firstName, java.lang.String lastName,
 		java.util.Date birthDate, java.lang.String email,
@@ -501,6 +518,10 @@ public class AuthorLocalServiceUtil {
 			userId, serviceContext);
 	}
 
+	/**
+	* Updates existing {@link com.softwerke.docs.booklist.model.Author Author}
+	* instance in database
+	*/
 	public static com.softwerke.docs.booklist.model.Author updateAuthor(
 		long authorId, java.lang.String firstName, java.lang.String lastName,
 		java.util.Date birthDate, java.lang.String email,

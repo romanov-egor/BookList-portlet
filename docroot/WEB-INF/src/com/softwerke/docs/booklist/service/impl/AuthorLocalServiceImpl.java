@@ -50,52 +50,73 @@ public class AuthorLocalServiceImpl extends AuthorLocalServiceBaseImpl {
 	 * Never reference this interface directly. Always use {@link com.softwerke.docs.booklist.service.AuthorLocalServiceUtil} to access the author local service.
 	 */
 	
+	/**
+	 * Returns {@link java.util.List List} of 
+	 * {@link com.softwerke.docs.booklist.model.Author Authors}
+	 */
 	public List<Author> getAuthors (long groupId) throws SystemException {
 	    return authorPersistence.findByGroupId(groupId);
 	}
-
+	
+	/**
+	 * Returns {@link java.util.List List} of 
+	 * {@link com.softwerke.docs.booklist.model.Author Authors}
+	 */
 	public List<Author> getAuthors (long groupId, int start, int end)
 	   throws SystemException {
 	    return authorPersistence.findByGroupId(groupId, start, end);
 	}
 	
+	/**
+	 * Returns {@link java.util.List List} of 
+	 * {@link com.softwerke.docs.booklist.model.Book Books} related to an
+	 * {@link com.softwerke.docs.booklist.model.Author Author}
+	 */
 	public List<Book> getBooksByAuthor(long authorId)
 		    throws PortalException, SystemException {
-
-		    return authorPersistence.getBooks(authorId);
-		}
+	    return authorPersistence.getBooks(authorId);
+	}
 	
+	/**
+	 * Validates {@link com.softwerke.docs.booklist.model.Author Author's}
+	 * first name, birth date and email
+	 * @param firstName
+	 * @param birthDate
+	 * @param email
+	 * @throws PortalException
+	 */
 	protected void validate (String firstName, Date birthDate, String email) 
 	        throws PortalException {
 	    if (Validator.isNull(firstName)) {
 	        throw new AuthorFirstNameException();
 	    }
-
 	    if (Validator.isNull(email)) {
 	        throw new AuthorEmailException();
 	    }
-	    
 	    if (!Validator.isEmailAddress(email)) {
 	        throw new AuthorEmailException();
 	    }
-
 	    if (Validator.isNull(birthDate)) {
 	        throw new AuthorBirthDateException();
 	    }
 	}
 	
-	public Author addAuthor(String firstName, String lastName, Date birthDate, String email,
-			List<Book> books, long userId, ServiceContext serviceContext)
+	/**
+	 * Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance 
+	 * in database
+	 */
+	public Author addAuthor(String firstName, String lastName, Date birthDate, 
+			String email, List<Book> books, long userId, 
+			ServiceContext serviceContext)
 	        throws PortalException, SystemException {
-		
 	    long groupId = serviceContext.getScopeGroupId();
 	    User user = userPersistence.findByPrimaryKey(userId);
 	    Date now = new Date();
-
-	    validate(firstName, birthDate, email);
-
 	    long authorId = counterLocalService.increment();
 	    Author author = authorPersistence.create(authorId);
+	    
+	    validate(firstName, birthDate, email);
+	    
 	    author.setUuid(serviceContext.getUuid());
 	    author.setUserId(userId);
 	    author.setGroupId(groupId);
@@ -112,20 +133,23 @@ public class AuthorLocalServiceImpl extends AuthorLocalServiceBaseImpl {
 	    	authorPersistence.addBooks(author.getPrimaryKey(), books);
 	    }
 	    authorPersistence.update(author);
-
 	    return author;
 	}
 	
-	public Author updateAuthor(long authorId, String firstName, String lastName, Date birthDate, String email,
-			List<Book> books, long userId, ServiceContext serviceContext)
+	/**
+	 * Updates existing {@link com.softwerke.docs.booklist.model.Author Author} 
+	 * instance in database
+	 */
+	public Author updateAuthor(long authorId, String firstName, 
+			String lastName, Date birthDate, String email, List<Book> books, 
+			long userId, ServiceContext serviceContext)
 	        throws PortalException, SystemException {
-		
 		Date now = new Date();
 		User user = userPersistence.findByPrimaryKey(userId);
-
-	    validate(firstName, birthDate, email);
-
 	    Author author = authorPersistence.findByPrimaryKey(authorId);
+	    
+	    validate(firstName, birthDate, email);
+	    
 	    author.setUuid(serviceContext.getUuid());
 	    author.setUserId(userId);
 	    author.setCompanyId(user.getCompanyId());
@@ -144,9 +168,14 @@ public class AuthorLocalServiceImpl extends AuthorLocalServiceBaseImpl {
 	    return author;
 	}
 	
+	/**
+	 * Removes {@link com.softwerke.docs.booklist.model.Author Author} instance 
+	 * from database
+	 */
 	public Author deleteAuthor(long authorId) 
 			throws PortalException, SystemException {
 		Author author = authorPersistence.findByPrimaryKey(authorId);
+		
 		authorPersistence.clearBooks(authorId);
 		authorPersistence.remove(author);
 		return author;

@@ -20,7 +20,6 @@ import com.liferay.portal.kernel.messaging.Message;
 import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
 import com.softwerke.docs.booklist.service.AuthorServiceUtil;
 import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
-import com.softwerke.docs.booklist.service.BookServiceUtil;
 import com.softwerke.docs.booklist.service.ClpSerializer;
 
 /**
@@ -42,8 +41,6 @@ public class ClpMessageListener extends BaseMessageListener {
 
 			AuthorServiceUtil.clearService();
 			BookLocalServiceUtil.clearService();
-
-			BookServiceUtil.clearService();
 		}
 	}
 }

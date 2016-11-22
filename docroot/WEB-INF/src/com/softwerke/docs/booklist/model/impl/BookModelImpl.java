@@ -16,7 +16,6 @@ package com.softwerke.docs.booklist.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
@@ -32,16 +31,13 @@ import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
 
 import com.softwerke.docs.booklist.model.Book;
 import com.softwerke.docs.booklist.model.BookModel;
-import com.softwerke.docs.booklist.model.BookSoap;
 
 import java.io.Serializable;
 
 import java.sql.Types;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -57,7 +53,6 @@ import java.util.Map;
  * @see com.softwerke.docs.booklist.model.BookModel
  * @generated
  */
-@JSON(strict = true)
 public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -98,55 +93,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 	public static long GROUPID_COLUMN_BITMASK = 2L;
 	public static long UUID_COLUMN_BITMASK = 4L;
 	public static long TITLE_COLUMN_BITMASK = 8L;
-
-	/**
-	 * Converts the soap model instance into a normal model instance.
-	 *
-	 * @param soapModel the soap model instance to convert
-	 * @return the normal model instance
-	 */
-	public static Book toModel(BookSoap soapModel) {
-		if (soapModel == null) {
-			return null;
-		}
-
-		Book model = new BookImpl();
-
-		model.setUuid(soapModel.getUuid());
-		model.setBookId(soapModel.getBookId());
-		model.setGroupId(soapModel.getGroupId());
-		model.setCompanyId(soapModel.getCompanyId());
-		model.setUserId(soapModel.getUserId());
-		model.setUserName(soapModel.getUserName());
-		model.setCreateDate(soapModel.getCreateDate());
-		model.setModifiedDate(soapModel.getModifiedDate());
-		model.setTitle(soapModel.getTitle());
-		model.setIsbn(soapModel.getIsbn());
-		model.setReleaseDate(soapModel.getReleaseDate());
-
-		return model;
-	}
-
-	/**
-	 * Converts the soap model instances into normal model instances.
-	 *
-	 * @param soapModels the soap model instances to convert
-	 * @return the normal model instances
-	 */
-	public static List<Book> toModels(BookSoap[] soapModels) {
-		if (soapModels == null) {
-			return null;
-		}
-
-		List<Book> models = new ArrayList<Book>(soapModels.length);
-
-		for (BookSoap soapModel : soapModels) {
-			models.add(toModel(soapModel));
-		}
-
-		return models;
-	}
-
 	public static final String MAPPING_TABLE_BL_BOOK_AUTHOR_NAME = "BL_Book_Author";
 	public static final Object[][] MAPPING_TABLE_BL_BOOK_AUTHOR_COLUMNS = {
 			{ "authorId", Types.BIGINT },
@@ -279,7 +225,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		}
 	}
 
-	@JSON
 	@Override
 	public String getUuid() {
 		if (_uuid == null) {
@@ -303,7 +248,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		return GetterUtil.getString(_originalUuid);
 	}
 
-	@JSON
 	@Override
 	public long getBookId() {
 		return _bookId;
@@ -314,7 +258,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		_bookId = bookId;
 	}
 
-	@JSON
 	@Override
 	public long getGroupId() {
 		return _groupId;
@@ -337,7 +280,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		return _originalGroupId;
 	}
 
-	@JSON
 	@Override
 	public long getCompanyId() {
 		return _companyId;
@@ -360,7 +302,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		return _originalCompanyId;
 	}
 
-	@JSON
 	@Override
 	public long getUserId() {
 		return _userId;
@@ -381,7 +322,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		_userUuid = userUuid;
 	}
 
-	@JSON
 	@Override
 	public String getUserName() {
 		if (_userName == null) {
@@ -397,7 +337,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		_userName = userName;
 	}
 
-	@JSON
 	@Override
 	public Date getCreateDate() {
 		return _createDate;
@@ -408,7 +347,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		_createDate = createDate;
 	}
 
-	@JSON
 	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
@@ -419,7 +357,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		_modifiedDate = modifiedDate;
 	}
 
-	@JSON
 	@Override
 	public String getTitle() {
 		if (_title == null) {
@@ -437,7 +374,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		_title = title;
 	}
 
-	@JSON
 	@Override
 	public String getIsbn() {
 		if (_isbn == null) {
@@ -453,7 +389,6 @@ public class BookModelImpl extends BaseModelImpl<Book> implements BookModel {
 		_isbn = isbn;
 	}
 
-	@JSON
 	@Override
 	public Date getReleaseDate() {
 		return _releaseDate;

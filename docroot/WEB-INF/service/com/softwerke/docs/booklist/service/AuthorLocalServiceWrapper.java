@@ -496,6 +496,10 @@ public class AuthorLocalServiceWrapper implements AuthorLocalService,
 		return _authorLocalService.invokeMethod(name, parameterTypes, arguments);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Author Authors}
+	*/
 	@Override
 	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthors(
 		long groupId)
@@ -503,6 +507,10 @@ public class AuthorLocalServiceWrapper implements AuthorLocalService,
 		return _authorLocalService.getAuthors(groupId);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Author Authors}
+	*/
 	@Override
 	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthors(
 		long groupId, int start, int end)
@@ -510,6 +518,11 @@ public class AuthorLocalServiceWrapper implements AuthorLocalService,
 		return _authorLocalService.getAuthors(groupId, start, end);
 	}
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Book Books} related to an
+	* {@link com.softwerke.docs.booklist.model.Author Author}
+	*/
 	@Override
 	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooksByAuthor(
 		long authorId)
@@ -518,6 +531,10 @@ public class AuthorLocalServiceWrapper implements AuthorLocalService,
 		return _authorLocalService.getBooksByAuthor(authorId);
 	}
 
+	/**
+	* Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance
+	* in database
+	*/
 	@Override
 	public com.softwerke.docs.booklist.model.Author addAuthor(
 		java.lang.String firstName, java.lang.String lastName,
@@ -530,6 +547,10 @@ public class AuthorLocalServiceWrapper implements AuthorLocalService,
 			email, books, userId, serviceContext);
 	}
 
+	/**
+	* Updates existing {@link com.softwerke.docs.booklist.model.Author Author}
+	* instance in database
+	*/
 	@Override
 	public com.softwerke.docs.booklist.model.Author updateAuthor(
 		long authorId, java.lang.String firstName, java.lang.String lastName,

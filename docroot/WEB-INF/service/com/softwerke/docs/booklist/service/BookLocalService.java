@@ -416,22 +416,39 @@ public interface BookLocalService extends BaseLocalService, InvokableLocalServic
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Book Books}
+	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooks(
 		long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Book Books}
+	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.softwerke.docs.booklist.model.Book> getBooks(
 		long groupId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Returns {@link java.util.List List} of
+	* {@link com.softwerke.docs.booklist.model.Author Authors} related to a
+	* {@link com.softwerke.docs.booklist.model.Book Book}
+	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.softwerke.docs.booklist.model.Author> getAuthorsByBook(
 		long bookId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Adds new {@link com.softwerke.docs.booklist.model.Book Book} instance in
+	* database
+	*/
 	public com.softwerke.docs.booklist.model.Book addBook(
 		java.lang.String title, java.lang.String ISBN,
 		java.util.Date releaseDate,
@@ -440,6 +457,10 @@ public interface BookLocalService extends BaseLocalService, InvokableLocalServic
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	/**
+	* Updates existing {@link com.softwerke.docs.booklist.model.Book Book}
+	* instance in database
+	*/
 	public com.softwerke.docs.booklist.model.Book updateBook(long bookId,
 		java.lang.String newTitle, java.lang.String newISBN,
 		java.util.Date newReleaseDate,
