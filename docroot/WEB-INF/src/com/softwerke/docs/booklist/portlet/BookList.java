@@ -26,10 +26,12 @@ import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextFactory;
 import com.liferay.util.bridges.mvc.MVCPortlet;
+import com.softwerke.docs.booklist.businesslogic.AuthorItem;
+import com.softwerke.docs.booklist.businesslogic.AuthorRenderPreferences;
+import com.softwerke.docs.booklist.businesslogic.BookItem;
+import com.softwerke.docs.booklist.businesslogic.BookRenderPreferences;
 import com.softwerke.docs.booklist.model.Author;
-import com.softwerke.docs.booklist.model.AuthorItem;
 import com.softwerke.docs.booklist.model.Book;
-import com.softwerke.docs.booklist.model.BookItem;
 import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
 import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
 
@@ -105,79 +107,7 @@ public class BookList extends MVCPortlet {
 	            "/html/booklist/editBook.jsp");
 	        }
 	}
-	
-	/**
-	 * Links {@link com.softwerke.docs.booklist.model.Author Author} to 
-	 * {@link com.softwerke.docs.booklist.model.Book Book}<br>
-	 * Uses {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil}
-	 * @param request - Action Request
-	 * @param response - Action Response
-	 * @throws PortalException
-	 * @throws SystemException
-	 * @see javax.portlet.ActionRequest
-	 * @see javax.portlet.ActionResponse
-	 */
-	public void bindAuthorToBook(ActionRequest request, ActionResponse response)
-	        throws PortalException, SystemException {
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(
-		        Book.class.getName(), request);
-		long bookId = ParamUtil.getLong(request, "bookId");
-	    long authorId = ParamUtil.getLong(request, "authorId");
-	    Book book = BookLocalServiceUtil.getBook(bookId);
-	    ArrayList<Author> authors = new ArrayList<Author>(
-	    		AuthorLocalServiceUtil.getAuthorsByBook(bookId));
-	    
-	    if (authorId > 0) {
-	    authors.add(AuthorLocalServiceUtil.getAuthor(authorId));
-	    }
-	    try {
-	        BookLocalServiceUtil.updateBook(bookId, book.getTitle(), 
-	        		book.getIsbn(), book.getReleaseDate(), authors, 
-	        		serviceContext.getUserId(), serviceContext);
-	        SessionMessages.add(request, "bookUpdated");
-	    } catch (Exception e) {
-	        SessionErrors.add(request, e.getClass().getName());
-	        response.setRenderParameter("mvcPath",
-	            "/html/booklist/editBook.jsp");
-        }
-	}
-	
-	/**
-	 * Removes link between {@link com.softwerke.docs.booklist.model.Author Author} 
-	 * and {@link com.softwerke.docs.booklist.model.Book Book}<br>
-	 * Uses {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil}
-	 * @param request - Action Request
-	 * @param response - Action Response
-	 * @throws PortalException
-	 * @throws SystemException
-	 * @see javax.portlet.ActionRequest
-	 * @see javax.portlet.ActionResponse
-	 */
-	public void unbindAuthorToBook(ActionRequest request, ActionResponse response)
-	        throws PortalException, SystemException {
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(
-		        Book.class.getName(), request);		
-		long bookId = ParamUtil.getLong(request, "bookId");
-	    long authorId = ParamUtil.getLong(request, "authorId");
-	    Book book = BookLocalServiceUtil.getBook(bookId);
-	    ArrayList<Author> authors = new ArrayList<Author>(
-	    		AuthorLocalServiceUtil.getAuthorsByBook(bookId));
-	    
-	    if (authorId > 0) {
-	    	authors.remove(AuthorLocalServiceUtil.getAuthor(authorId));
-	    }
-	    try {
-	        BookLocalServiceUtil.updateBook(bookId, book.getTitle(), 
-	        		book.getIsbn(), book.getReleaseDate(), authors, 
-	        		serviceContext.getUserId(), serviceContext);
-	        SessionMessages.add(request, "bookUpdated");
-	    } catch (Exception e) {
-	        SessionErrors.add(request, e.getClass().getName());
-	        response.setRenderParameter("mvcPath",
-	            "/html/booklist/editBook.jsp");
-        }
-	}
-	
+
 	/**
 	 * Gathers information from request and removes {@link com.softwerke.docs.booklist.model.Book Book} instance 
 	 * from database
@@ -203,7 +133,7 @@ public class BookList extends MVCPortlet {
 	}
 	
 	/**
-	 * Gather information from request and adds new {@link com.softwerke.docs.booklist.model.Author Author} instance 
+	 * Gathers information from request and adds new {@link com.softwerke.docs.booklist.model.Author Author} instance 
 	 * in database 
 	 * @param request - Action Request
 	 * @param response - Action Response
@@ -281,7 +211,7 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void bindBookToAuthor (ActionRequest request, ActionResponse response) 
+	public void bindBookAndAuthor (ActionRequest request, ActionResponse response) 
 			throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 		        Author.class.getName(), request);		
@@ -317,7 +247,7 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void unbindBookToAuthor (ActionRequest request, ActionResponse response) 
+	public void unbindBookAndAuthor (ActionRequest request, ActionResponse response) 
 			throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
 		        Author.class.getName(), request);		
@@ -459,8 +389,10 @@ public class BookList extends MVCPortlet {
         	authorItems.add(new AuthorItem(author));
         }
         
-        renderRequest.setAttribute("bookPrefs", bookPrefs);
-        renderRequest.setAttribute("authorPrefs", authorPrefs);
+        renderRequest.setAttribute("bookPrefs", 
+        		new BookRenderPreferences(bookPrefs));
+        renderRequest.setAttribute("authorPrefs", 
+        		new AuthorRenderPreferences(authorPrefs));
         renderRequest.setAttribute("names", names);
         renderRequest.setAttribute("books", bookItems);
         renderRequest.setAttribute("authors", authorItems);
@@ -478,8 +410,9 @@ public class BookList extends MVCPortlet {
         	currBook = new BookItem(BookLocalServiceUtil.getBook(currBookId));
         }
         
-        renderRequest.setAttribute("authorPrefs", authorPrefs);
         renderRequest.setAttribute("book", currBook);
+        renderRequest.setAttribute("authorPrefs", 
+        		new AuthorRenderPreferences(authorPrefs));
 	}
 	
 	public void renderEditAuthor(RenderRequest renderRequest,
@@ -496,7 +429,8 @@ public class BookList extends MVCPortlet {
         }
         
         renderRequest.setAttribute("author", currAuthor);
-        renderRequest.setAttribute("bookPrefs", bookPrefs);
+        renderRequest.setAttribute("bookPrefs", 
+        		new BookRenderPreferences(bookPrefs));
 	}
 	
 	public void renderBookList(RenderRequest renderRequest,

@@ -1,9 +1,10 @@
-package com.softwerke.docs.booklist.model;
+package com.softwerke.docs.booklist.businesslogic;
 
 import java.util.*;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.softwerke.docs.booklist.model.Author;
 import com.softwerke.docs.booklist.model.Book;
 import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
 

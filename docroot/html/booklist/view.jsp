@@ -38,13 +38,13 @@
 						<portlet:param name="mode" value="editBook" />
 					</portlet:renderURL>
 					<a href="${editBookURL}">
-						<c:if test="${bookPrefs.contains(\"title\")}">
+						<c:if test="${bookPrefs.isTitleVisible()}">
 							${currBook.getTitle()} 
 						</c:if>
-						<c:if test="${bookPrefs.contains(\"ISBN\")}">
+						<c:if test="${bookPrefs.isIsbnVisible()}">
 							${currBook.getISBN()} 
 						</c:if>
-						<c:if test="${bookPrefs.contains(\"releaseDate\")}">
+						<c:if test="${bookPrefs.isReleaseDateVisible()}">
 							${currBook.getReleaseDate()} 
 						</c:if>
 					</a>
@@ -62,16 +62,16 @@
 									<portlet:param name="mode" value="editAuthor" />
 								</portlet:renderURL>
 								<a href="${editAuthorURL}">
-									<c:if test="${authorPrefs.contains(\"firstName\")}">
+									<c:if test="${authorPrefs.isFirstNameVisible()}">
 										${currAuthor.getFirstName()}
 									</c:if>
-									<c:if test="${authorPrefs.contains(\"lastName\")}">
+									<c:if test="${authorPrefs.isLastNameVisible()}">
 										${currAuthor.getLastName()}
 									</c:if>
-									<c:if test="${authorPrefs.contains(\"birthDate\")}">
+									<c:if test="${authorPrefs.isBirthDateVisible()}">
 										${currAuthor.getBirthDate()}
 									</c:if>
-									<c:if test="${authorPrefs.contains(\"email\")}">
+									<c:if test="${authorPrefs.isEmailVisible()}">
 										${currAuthor.getEmail()}
 									</c:if>
 								</a>
