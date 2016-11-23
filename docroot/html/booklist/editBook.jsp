@@ -1,8 +1,15 @@
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
-<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
-<%@ page import="com.softwerke.docs.booklist.service.BookLocalServiceUtil" %>
+<liferay-ui:error key="title-is-null" message="Title must not be empty!" />
+<liferay-ui:error key="ISBN-is-null" message="ISBN must not be empty!" />
+<liferay-ui:error key="release-date-is-null" message="Release date must not be empty!" />
+<liferay-ui:error key="portal-exception" message="Input Error!" />
+<liferay-ui:error key="system-exception" message="System Error!" />
+<liferay-ui:success key="book-added" message="Book added" />
+<liferay-ui:success key="book-updated" message="Book updated" />
+<liferay-ui:success key="book-deleted" message="Book deleted" />
 
 <portlet:defineObjects />
 
@@ -33,7 +40,8 @@
 	<c:if test="${book != null}">
 		<h1>Edit Book</h1>
 		<portlet:actionURL name="updateBook" var="bookDetails">
-			<portlet:param name="bookId" value="${book.getId()}"/>
+			<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
+			<portlet:param name="bookId" value="${book.getId()}" />
 		</portlet:actionURL>
 		<c:set var="title" scope="session" value="${book.getTitle()}"/>
 		<c:set var="ISBN" scope="session" value="${book.getISBN()}"/>

@@ -318,33 +318,6 @@ public class ClpSerializer {
 		}
 
 		if (className.equals(
-					"com.softwerke.docs.booklist.AuthorBirthDateException")) {
-			return new com.softwerke.docs.booklist.AuthorBirthDateException();
-		}
-
-		if (className.equals("com.softwerke.docs.booklist.AuthorEmailException")) {
-			return new com.softwerke.docs.booklist.AuthorEmailException();
-		}
-
-		if (className.equals(
-					"com.softwerke.docs.booklist.AuthorFirstNameException")) {
-			return new com.softwerke.docs.booklist.AuthorFirstNameException();
-		}
-
-		if (className.equals("com.softwerke.docs.booklist.BookISBNException")) {
-			return new com.softwerke.docs.booklist.BookISBNException();
-		}
-
-		if (className.equals(
-					"com.softwerke.docs.booklist.BookReleaseDateException")) {
-			return new com.softwerke.docs.booklist.BookReleaseDateException();
-		}
-
-		if (className.equals("com.softwerke.docs.booklist.BookTitleException")) {
-			return new com.softwerke.docs.booklist.BookTitleException();
-		}
-
-		if (className.equals(
 					"com.softwerke.docs.booklist.NoSuchAuthorException")) {
 			return new com.softwerke.docs.booklist.NoSuchAuthorException();
 		}

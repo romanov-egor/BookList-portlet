@@ -64,12 +64,4 @@
             <finder-column name="groupId"></finder-column>
         </finder>
 	</entity>
-    <exceptions>
-        <exception>BookTitle</exception>
-        <exception>BookISBN</exception>
-        <exception>BookReleaseDate</exception>
-        <exception>AuthorFirstName</exception>
-        <exception>AuthorEmail</exception>
-        <exception>AuthorBirthDate</exception>
-    </exceptions>
 </service-builder>

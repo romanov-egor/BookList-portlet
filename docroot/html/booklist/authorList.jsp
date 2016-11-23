@@ -19,6 +19,7 @@
 	</tr>
 	<c:forEach items="${book.getRelatedAuthors()}" var="currAuthor">
 		<portlet:actionURL name="unbindBookAndAuthor" var="removeAuthorForBookURL">
+			<portlet:param name="mvcPath" value="${backURL}" />
 			<portlet:param name="bookId" value="${book.getId()}"/>
 			<portlet:param name="authorId" value="${currAuthor.getAuthorId()}"/>
 		</portlet:actionURL>
@@ -36,6 +37,7 @@
 	</c:forEach>
 	<c:forEach items="${otherAuthors}" var="currAuthor">
 		<portlet:actionURL name="bindBookAndAuthor" var="addAuthorForBookURL">
+			<portlet:param name="mvcPath" value="${backURL}" />
 			<portlet:param name="bookId" value="${book.getId()}"/>
 			<portlet:param name="authorId" value="${currAuthor.getAuthorId()}"/>
 		</portlet:actionURL>

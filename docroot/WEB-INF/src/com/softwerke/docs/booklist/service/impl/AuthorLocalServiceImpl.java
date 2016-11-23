@@ -22,9 +22,6 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
-import com.softwerke.docs.booklist.AuthorBirthDateException;
-import com.softwerke.docs.booklist.AuthorEmailException;
-import com.softwerke.docs.booklist.AuthorFirstNameException;
 import com.softwerke.docs.booklist.model.Author;
 import com.softwerke.docs.booklist.model.Book;
 import com.softwerke.docs.booklist.service.base.AuthorLocalServiceBaseImpl;
@@ -78,30 +75,6 @@ public class AuthorLocalServiceImpl extends AuthorLocalServiceBaseImpl {
 	}
 	
 	/**
-	 * Validates {@link com.softwerke.docs.booklist.model.Author Author's}
-	 * first name, birth date and email
-	 * @param firstName
-	 * @param birthDate
-	 * @param email
-	 * @throws PortalException
-	 */
-	protected void validate (String firstName, Date birthDate, String email) 
-	        throws PortalException {
-	    if (Validator.isNull(firstName)) {
-	        throw new AuthorFirstNameException();
-	    }
-	    if (Validator.isNull(email)) {
-	        throw new AuthorEmailException();
-	    }
-	    if (!Validator.isEmailAddress(email)) {
-	        throw new AuthorEmailException();
-	    }
-	    if (Validator.isNull(birthDate)) {
-	        throw new AuthorBirthDateException();
-	    }
-	}
-	
-	/**
 	 * Adds new {@link com.softwerke.docs.booklist.model.Author Author} instance 
 	 * in database
 	 */
@@ -114,8 +87,6 @@ public class AuthorLocalServiceImpl extends AuthorLocalServiceBaseImpl {
 	    Date now = new Date();
 	    long authorId = counterLocalService.increment();
 	    Author author = authorPersistence.create(authorId);
-	    
-	    validate(firstName, birthDate, email);
 	    
 	    author.setUuid(serviceContext.getUuid());
 	    author.setUserId(userId);
@@ -147,8 +118,6 @@ public class AuthorLocalServiceImpl extends AuthorLocalServiceBaseImpl {
 		Date now = new Date();
 		User user = userPersistence.findByPrimaryKey(userId);
 	    Author author = authorPersistence.findByPrimaryKey(authorId);
-	    
-	    validate(firstName, birthDate, email);
 	    
 	    author.setUuid(serviceContext.getUuid());
 	    author.setUserId(userId);

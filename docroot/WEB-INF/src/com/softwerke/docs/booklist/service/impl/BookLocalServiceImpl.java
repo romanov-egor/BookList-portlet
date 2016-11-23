@@ -22,9 +22,6 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
-import com.softwerke.docs.booklist.BookISBNException;
-import com.softwerke.docs.booklist.BookReleaseDateException;
-import com.softwerke.docs.booklist.BookTitleException;
 import com.softwerke.docs.booklist.model.Author;
 import com.softwerke.docs.booklist.model.Book;
 import com.softwerke.docs.booklist.service.base.BookLocalServiceBaseImpl;
@@ -78,29 +75,6 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 	}
 	
 	/**
-	 * Validates {@link com.softwerke.docs.booklist.model.Book Book's}
-	 * title, ISBN and release date
-	 * @param title
-	 * @param ISBN
-	 * @param releaseDate
-	 * @throws PortalException
-	 */
-	protected void validate(String title, String ISBN, Date releaseDate) 
-	        throws PortalException {
-	    if (Validator.isNull(title)) {
-	        throw new BookTitleException();
-	    }
-
-	    if (Validator.isNull(ISBN)) {
-	        throw new BookISBNException();
-	    }
-
-	    if (Validator.isNull(releaseDate)) {
-	        throw new BookReleaseDateException();
-	    }
-	}
-	
-	/**
 	 * Adds new {@link com.softwerke.docs.booklist.model.Book Book} instance in
 	 * database
 	 */
@@ -112,8 +86,6 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 	    Date now = new Date();
 	    long bookId = counterLocalService.increment();
 	    Book book = bookPersistence.create(bookId);
-	    
-	    validate(title, ISBN, releaseDate);
 
 	    book.setUuid(serviceContext.getUuid());
 	    book.setUserId(userId);
@@ -145,8 +117,6 @@ public class BookLocalServiceImpl extends BookLocalServiceBaseImpl {
 		Date now = new Date();
 		User user = userPersistence.findByPrimaryKey(userId);
 		Book book = bookPersistence.findByPrimaryKey(bookId);
-		
-		validate(newTitle, newISBN, newReleaseDate);
 		
 		book.setUuid(serviceContext.getUuid());
 		book.setUserId(userId);

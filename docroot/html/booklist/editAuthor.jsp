@@ -1,8 +1,16 @@
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
-<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
-<%@ page import="com.softwerke.docs.booklist.service.BookLocalServiceUtil" %>
+<liferay-ui:error key="first-name-is-null" message="First name must not be empty!" />
+<liferay-ui:error key="birth-date-is-null" message="Birth date must not be empty!" />
+<liferay-ui:error key="email-is-null" message="Email must not be empty!" />
+<liferay-ui:error key="email-wrong-structure" message="Email is incorrect!" />
+<liferay-ui:error key="portal-exception" message="Input Error!" />
+<liferay-ui:error key="system-exception" message="System Error!" />
+<liferay-ui:success key="author-added" message="Author added" />
+<liferay-ui:success key="author-updated" message="Author updated" />
+<liferay-ui:success key="author-deleted" message="Author deleted" />
 
 <portlet:defineObjects />
 
