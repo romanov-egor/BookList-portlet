@@ -42,8 +42,10 @@ public class AuthorItem {
 		return lastName;
 	}
 
-	public Date getBirthDate() {
-		return birthDate;
+	public String getBirthDate() {
+		String date = birthDate.toString();
+		String[] tmp = date.split(" ");
+		return String.format("%s %s %s", tmp[2], tmp[1], tmp[5]); 
 	}
 
 	public String getEmail() {

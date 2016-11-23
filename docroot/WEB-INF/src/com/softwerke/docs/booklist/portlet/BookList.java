@@ -62,7 +62,7 @@ public class BookList extends MVCPortlet {
 	    	String title = ParamUtil.getString(request, "title");
 	    	String ISBN = ParamUtil.getString(request, "ISBN");
 	    	Date releaseDate = ParamUtil.getDate(request, "releaseDate", 
-	    			DateFormat.getDateInstance());
+	    			DateFormat.getDateInstance(DateFormat.SHORT));
 	    	
 	    	validate(title, ISBN, releaseDate);
 	    	
@@ -98,13 +98,12 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void updateBook(ActionRequest request, ActionResponse response)
-	        throws PortalException, SystemException {
+	public void updateBook(ActionRequest request, ActionResponse response) {
 		long bookId = ParamUtil.getLong(request, "bookId");
     	String title = ParamUtil.getString(request, "title");
 	    String ISBN = ParamUtil.getString(request, "ISBN");
 	    Date releaseDate = ParamUtil.getDate(request, "releaseDate", 
-	    		DateFormat.getDateInstance());
+	    		DateFormat.getDateInstance(DateFormat.SHORT));
 	    long authorId = ParamUtil.getLong(request, "authorId");
 		
 		try {
@@ -151,8 +150,7 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void deleteBook(ActionRequest request, ActionResponse response)
-			throws PortalException, SystemException {
+	public void deleteBook(ActionRequest request, ActionResponse response) {
 		long bookId = ParamUtil.getLong(request, "bookId");
 		
 		try {
@@ -179,15 +177,14 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void addAuthor(ActionRequest request, ActionResponse response)
-	        throws PortalException, SystemException {
+	public void addAuthor(ActionRequest request, ActionResponse response) {
 		try {
 			ServiceContext serviceContext = ServiceContextFactory.getInstance(
 					Author.class.getName(), request);
 			String firstName = ParamUtil.getString(request, "firstName");
 			String lastName = ParamUtil.getString(request, "lastName");
 			Date birthDate = ParamUtil.getDate(request, "birthDate", 
-					DateFormat.getDateInstance());
+					DateFormat.getDateInstance(DateFormat.SHORT));
 			String email = ParamUtil.getString(request, "email");
 			
 			validate(firstName, birthDate, email);
@@ -224,18 +221,17 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void updateAuthor(ActionRequest request, ActionResponse response)
-	        throws PortalException, SystemException {
-		
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(
-				Author.class.getName(), request);
+	public void updateAuthor(ActionRequest request, ActionResponse response) {
 		long authorId = ParamUtil.getLong(request, "authorId");
 		String firstName = ParamUtil.getString(request, "firstName");
 		String lastName = ParamUtil.getString(request, "lastName");
-		Date birthDate = ParamUtil.getDate(request, "birthDate", DateFormat.getDateInstance());
+		Date birthDate = ParamUtil.getDate(request, "birthDate", 
+				DateFormat.getDateInstance(DateFormat.SHORT));
 		String email = ParamUtil.getString(request, "email");
 		long bookId = ParamUtil.getLong(request, "bookId");
-		try {    
+		try {
+			ServiceContext serviceContext = ServiceContextFactory.getInstance(
+					Author.class.getName(), request);
 		    ArrayList<Book> books = new ArrayList<Book>(BookLocalServiceUtil.getBooksByAuthor(authorId));
 		    
 		    if (bookId > 0) {
@@ -278,15 +274,15 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void bindBookAndAuthor (ActionRequest request, ActionResponse response) 
-			throws PortalException, SystemException {		
+	public void bindBookAndAuthor (ActionRequest request, ActionResponse response) {		
 		long authorId = ParamUtil.getLong(request, "authorId");
 		long bookId = ParamUtil.getLong(request, "bookId");
 		try {
 			ServiceContext serviceContext = ServiceContextFactory.getInstance(
 					Author.class.getName(), request);
 			Author author = AuthorLocalServiceUtil.getAuthor(authorId);
-			ArrayList<Book> books = new ArrayList<Book>(BookLocalServiceUtil.getBooksByAuthor(authorId));
+			ArrayList<Book> books = new ArrayList<Book>(
+					BookLocalServiceUtil.getBooksByAuthor(authorId));
 	    
 			if (bookId > 0) {
 				books.add(BookLocalServiceUtil.getBook(bookId));
@@ -306,6 +302,7 @@ public class BookList extends MVCPortlet {
 	        log.error(e);
 	        log.error(e.getMessage());
 		}
+		
 	}
 	
 	/**
@@ -319,8 +316,7 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void unbindBookAndAuthor (ActionRequest request, ActionResponse response) 
-			throws PortalException, SystemException {
+	public void unbindBookAndAuthor (ActionRequest request, ActionResponse response) {
 		long authorId = ParamUtil.getLong(request, "authorId");
 		long bookId = ParamUtil.getLong(request, "bookId");
 	    try {
@@ -359,8 +355,7 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void deleteAuthor(ActionRequest request, ActionResponse response)
-			throws PortalException, SystemException {
+	public void deleteAuthor(ActionRequest request, ActionResponse response) {
 		long authorId = ParamUtil.getLong(request, "authorId");
 		try {
 	        AuthorLocalServiceUtil.deleteAuthor(authorId);
@@ -409,7 +404,7 @@ public class BookList extends MVCPortlet {
 	 * @throws PortalException
 	 */
 	protected void validate(String title, String ISBN, Date releaseDate) 
-	        throws PortalException {
+	        throws BookListException {
 	    if (Validator.isNull(title)) {
 	        throw new BookListException("title-is-null");
 	    }
@@ -433,8 +428,7 @@ public class BookList extends MVCPortlet {
 	 * @see javax.portlet.ActionRequest
 	 * @see javax.portlet.ActionResponse
 	 */
-	public void getPreferences(ActionRequest request, ActionResponse response)
-	        throws PortalException, SystemException {
+	public void getPreferences(ActionRequest request, ActionResponse response) {
 		String[] bookPrefs = ParamUtil.getParameterValues(request, "bookPrefs");
 		String[] authorPrefs = ParamUtil.getParameterValues(request, "authorPrefs");
 		PortletPreferences prefs = request.getPreferences();

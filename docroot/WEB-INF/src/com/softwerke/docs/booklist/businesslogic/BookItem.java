@@ -1,6 +1,7 @@
 package com.softwerke.docs.booklist.businesslogic;
 
 import java.util.*;
+import java.text.DateFormat;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -40,8 +41,10 @@ public class BookItem {
 		return ISBN;
 	}
 
-	public Date getReleaseDate() {
-		return releaseDate;
+	public String getReleaseDate() {
+		String date = releaseDate.toString();
+		String[] tmp = date.split(" ");
+		return String.format("%s %s %s", tmp[2], tmp[1], tmp[5]); 
 	}
 
 	public ArrayList<Author> getRelatedAuthors() {
