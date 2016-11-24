@@ -30,7 +30,6 @@
 	<portlet:param name="authorId" value="${author.getId()}"/>
 </portlet:actionURL>
 
-<html>
 <c:if test="${author == null}">
 	<h1>Add Author</h1>
 	<portlet:actionURL name="addAuthor" var="authorDetails"></portlet:actionURL>
@@ -49,23 +48,25 @@
 	<c:set var="birthDate" scope="session" value="${author.getBirthDate()}"/>
 	<c:set var="email" scope="session" value="${author.getEmail()}"/>
 </c:if>
-	<form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
-		<p>First Name</p>
-		<input name="<portlet:namespace />firstName" type="text" value="${firstName}"></input>
-		<p>Last Name</p> 
-		<input name="<portlet:namespace />lastName" type="text" value="${lastName}"></input>
-		<p>Birth Date</p>
-		<input name="<portlet:namespace />birthDate" type="date" value="${birthDate}"></input>
-        <p>Email</p>
-        <input name="<portlet:namespace />email" type="date" value="${email}"></input>
-        <c:if test="${author != null}">
-        <p>
+	
+<form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
+	<label>First Name
+		<input name="<portlet:namespace />firstName" type="text" value="${firstName}" />
+	</label>
+	<p>Last Name</p> 
+	<input name="<portlet:namespace />lastName" type="text" value="${lastName}"></input>
+	<p>Birth Date</p>
+	<input name="<portlet:namespace />birthDate" type="date" value="${birthDate}"></input>
+    <p>Email</p>
+    <input name="<portlet:namespace />email" type="date" value="${email}"></input>
+    <c:if test="${author != null}">
+	    <p>
 	        Books
 	        <a href="${listURL}">
 	        	<button type="button">Open Book list</button>
 	        </a>
 	    </p>
-        <table border="1">
+	    <table border="1">
 			<c:forEach items="${author.getRelatedBooks()}" var="currBook">
 				<portlet:renderURL var="editBookURL">
 					<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
@@ -91,15 +92,14 @@
 			</c:forEach>
 		</table>
 	</c:if>
-	<button type="submit">Submit</button>
-	<c:if test="${author != null}">
-		<a href="${deleteURL}">
-			<button type="button">Delete this Author</button>
-		</a>
-	</c:if>
-	<a href="${viewURL}">
-		<button type="button">Cancel</button>
+<button type="submit">Submit</button>
+<c:if test="${author != null}">
+	<a href="${deleteURL}">
+		<button type="button">Delete this Author</button>
 	</a>
-	</form>
-</html>
+</c:if>
+<a href="${viewURL}">
+	<button type="button">Cancel</button>
+</a>
+</form>
 
