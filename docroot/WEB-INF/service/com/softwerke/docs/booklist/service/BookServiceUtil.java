@@ -20,7 +20,7 @@ import com.liferay.portal.service.InvokableService;
 
 /**
  * Provides the remote service utility for Book. This utility wraps
- * {@link com.softwerke.docs.booklist.service.impl.BookServiceImpl} and is the
+ * {@link com.softwerke.docs.booklist.dal.service.impl.BookServiceImpl} and is the
  * primary access point for service operations in application layer code running
  * on a remote server. Methods of this service are expected to have security
  * checks based on the propagated JAAS credentials because this service can be
@@ -28,8 +28,8 @@ import com.liferay.portal.service.InvokableService;
  *
  * @author rei
  * @see BookService
- * @see com.softwerke.docs.booklist.service.base.BookServiceBaseImpl
- * @see com.softwerke.docs.booklist.service.impl.BookServiceImpl
+ * @see com.softwerke.docs.booklist.dal.service.base.BookServiceBaseImpl
+ * @see com.softwerke.docs.booklist.dal.service.impl.BookServiceImpl
  * @generated
  */
 public class BookServiceUtil {

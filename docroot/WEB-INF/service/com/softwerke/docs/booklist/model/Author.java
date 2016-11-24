@@ -21,8 +21,8 @@ import com.liferay.portal.model.PersistedModel;
  *
  * @author rei
  * @see AuthorModel
- * @see com.softwerke.docs.booklist.model.impl.AuthorImpl
- * @see com.softwerke.docs.booklist.model.impl.AuthorModelImpl
+ * @see com.softwerke.docs.booklist.dal.model.impl.AuthorImpl
+ * @see com.softwerke.docs.booklist.dal.model.impl.AuthorModelImpl
  * @generated
  */
 public interface Author extends AuthorModel, PersistedModel {

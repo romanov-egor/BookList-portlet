@@ -21,10 +21,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This class is used by SOAP remote services, specifically {@link com.softwerke.docs.booklist.service.http.AuthorServiceSoap}.
+ * This class is used by SOAP remote services, specifically {@link com.softwerke.docs.booklist.dal.service.http.AuthorServiceSoap}.
  *
  * @author rei
- * @see com.softwerke.docs.booklist.service.http.AuthorServiceSoap
+ * @see com.softwerke.docs.booklist.dal.service.http.AuthorServiceSoap
  * @generated
  */
 public class AuthorSoap implements Serializable {

@@ -30,8 +30,8 @@ import com.liferay.portal.service.InvokableService;
  *
  * @author rei
  * @see BookServiceUtil
- * @see com.softwerke.docs.booklist.service.base.BookServiceBaseImpl
- * @see com.softwerke.docs.booklist.service.impl.BookServiceImpl
+ * @see com.softwerke.docs.booklist.dal.service.base.BookServiceBaseImpl
+ * @see com.softwerke.docs.booklist.dal.service.impl.BookServiceImpl
  * @generated
  */
 @AccessControlled

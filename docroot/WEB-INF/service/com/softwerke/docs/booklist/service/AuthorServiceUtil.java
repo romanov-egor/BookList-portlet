@@ -20,7 +20,7 @@ import com.liferay.portal.service.InvokableService;
 
 /**
  * Provides the remote service utility for Author. This utility wraps
- * {@link com.softwerke.docs.booklist.service.impl.AuthorServiceImpl} and is the
+ * {@link com.softwerke.docs.booklist.dal.service.impl.AuthorServiceImpl} and is the
  * primary access point for service operations in application layer code running
  * on a remote server. Methods of this service are expected to have security
  * checks based on the propagated JAAS credentials because this service can be
@@ -28,8 +28,8 @@ import com.liferay.portal.service.InvokableService;
  *
  * @author rei
  * @see AuthorService
- * @see com.softwerke.docs.booklist.service.base.AuthorServiceBaseImpl
- * @see com.softwerke.docs.booklist.service.impl.AuthorServiceImpl
+ * @see com.softwerke.docs.booklist.dal.service.base.AuthorServiceBaseImpl
+ * @see com.softwerke.docs.booklist.dal.service.impl.AuthorServiceImpl
  * @generated
  */
 public class AuthorServiceUtil {
