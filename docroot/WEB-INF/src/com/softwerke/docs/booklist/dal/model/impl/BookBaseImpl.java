@@ -16,8 +16,8 @@ package com.softwerke.docs.booklist.dal.model.impl;
 
 import com.liferay.portal.kernel.exception.SystemException;
 
-import com.softwerke.docs.booklist.model.Book;
-import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
+import com.softwerke.docs.booklist.dal.model.Book;
+import com.softwerke.docs.booklist.dal.service.BookLocalServiceUtil;
 
 /**
  * The extended model base implementation for the Book service. Represents a row in the &quot;BL_Book&quot; database table, with each column mapped to a property of this class.
@@ -28,7 +28,7 @@ import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
  *
  * @author rei
  * @see BookImpl
- * @see com.softwerke.docs.booklist.model.Book
+ * @see com.softwerke.docs.booklist.dal.model.Book
  * @generated
  */
 public abstract class BookBaseImpl extends BookModelImpl implements Book {

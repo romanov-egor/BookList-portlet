@@ -23,8 +23,8 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
 import com.softwerke.docs.booklist.dal.service.base.BookLocalServiceBaseImpl;
-import com.softwerke.docs.booklist.model.Author;
-import com.softwerke.docs.booklist.model.Book;
+import com.softwerke.docs.booklist.dal.model.Author;
+import com.softwerke.docs.booklist.dal.model.Book;
 
 /**
  * The implementation of the book local service.

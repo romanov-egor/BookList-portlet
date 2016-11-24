@@ -18,7 +18,7 @@ package com.softwerke.docs.booklist.dal.model.impl;
  * The extended model implementation for the Book service. Represents a row in the &quot;BL_Book&quot; database table, with each column mapped to a property of this class.
  *
  * <p>
- * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.softwerke.docs.booklist.model.Book} interface.
+ * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.softwerke.docs.booklist.dal.model.Book} interface.
  * </p>
  *
  * @author rei
@@ -27,7 +27,7 @@ public class BookImpl extends BookBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this class directly. All methods that expect a book model instance should use the {@link com.softwerke.docs.booklist.model.Book} interface instead.
+	 * Never reference this class directly. All methods that expect a book model instance should use the {@link com.softwerke.docs.booklist.dal.model.Book} interface instead.
 	 */
 	public BookImpl() {
 	}

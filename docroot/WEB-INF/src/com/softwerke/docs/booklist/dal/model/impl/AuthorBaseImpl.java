@@ -16,8 +16,8 @@ package com.softwerke.docs.booklist.dal.model.impl;
 
 import com.liferay.portal.kernel.exception.SystemException;
 
-import com.softwerke.docs.booklist.model.Author;
-import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
+import com.softwerke.docs.booklist.dal.model.Author;
+import com.softwerke.docs.booklist.dal.service.AuthorLocalServiceUtil;
 
 /**
  * The extended model base implementation for the Author service. Represents a row in the &quot;BL_Author&quot; database table, with each column mapped to a property of this class.
@@ -28,7 +28,7 @@ import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
  *
  * @author rei
  * @see AuthorImpl
- * @see com.softwerke.docs.booklist.model.Author
+ * @see com.softwerke.docs.booklist.dal.model.Author
  * @generated
  */
 public abstract class AuthorBaseImpl extends AuthorModelImpl implements Author {

@@ -1,12 +1,13 @@
 package com.softwerke.docs.booklist.businesslogic.model;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.softwerke.docs.booklist.model.Author;
-import com.softwerke.docs.booklist.model.Book;
-import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
+import com.softwerke.docs.booklist.dal.model.Author;
+import com.softwerke.docs.booklist.dal.model.Book;
+import com.softwerke.docs.booklist.dal.service.BookLocalServiceUtil;
 
 /**
  * Model class for {@link com.softwerke.docs.booklist.model.Author Author}
@@ -43,9 +44,8 @@ public class AuthorItem {
 	}
 
 	public String getBirthDate() {
-		String date = birthDate.toString();
-		String[] tmp = date.split(" ");
-		return String.format("%s %s %s", tmp[2], tmp[1], tmp[5]); 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+		return dateFormat.format(this.birthDate);
 	}
 
 	public String getEmail() {

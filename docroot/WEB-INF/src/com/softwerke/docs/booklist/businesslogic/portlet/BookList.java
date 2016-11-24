@@ -1,7 +1,7 @@
 package com.softwerke.docs.booklist.businesslogic.portlet;
 
 import java.io.IOException;
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -34,10 +34,10 @@ import com.softwerke.docs.booklist.businesslogic.model.AuthorItem;
 import com.softwerke.docs.booklist.businesslogic.model.AuthorRenderPreferences;
 import com.softwerke.docs.booklist.businesslogic.model.BookItem;
 import com.softwerke.docs.booklist.businesslogic.model.BookRenderPreferences;
-import com.softwerke.docs.booklist.model.Author;
-import com.softwerke.docs.booklist.model.Book;
-import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
-import com.softwerke.docs.booklist.service.BookLocalServiceUtil;
+import com.softwerke.docs.booklist.dal.model.Author;
+import com.softwerke.docs.booklist.dal.model.Book;
+import com.softwerke.docs.booklist.dal.service.AuthorLocalServiceUtil;
+import com.softwerke.docs.booklist.dal.service.BookLocalServiceUtil;
 
 /**
  * Portlet implementation class BookList
@@ -62,7 +62,7 @@ public class BookList extends MVCPortlet {
 	    	String title = ParamUtil.getString(request, "title");
 	    	String ISBN = ParamUtil.getString(request, "ISBN");
 	    	Date releaseDate = ParamUtil.getDate(request, "releaseDate", 
-	    			DateFormat.getDateInstance(DateFormat.SHORT));
+	    			new SimpleDateFormat("dd.MM.yyyy"));
 	    	
 	    	validate(title, ISBN, releaseDate);
 	    	
@@ -72,12 +72,12 @@ public class BookList extends MVCPortlet {
 			response.setRenderParameter("bookId", String.valueOf(book.getBookId()));
 	    } catch (BookListException e) {
 	        SessionErrors.add(request, e.getLocalizationKey());
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (PortalException e) {
 			SessionErrors.add(request, "portal-exception");
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (SystemException e) {
 	        SessionErrors.add(request, "system-exception");
 	        log.error(e);
@@ -103,7 +103,7 @@ public class BookList extends MVCPortlet {
     	String title = ParamUtil.getString(request, "title");
 	    String ISBN = ParamUtil.getString(request, "ISBN");
 	    Date releaseDate = ParamUtil.getDate(request, "releaseDate", 
-	    		DateFormat.getDateInstance(DateFormat.SHORT));
+	    		new SimpleDateFormat("dd.MM.yyyy"));
 	    long authorId = ParamUtil.getLong(request, "authorId");
 		
 		try {
@@ -123,12 +123,12 @@ public class BookList extends MVCPortlet {
 		    SessionMessages.add(request, "book-updated");
 	    } catch (BookListException e) {
 	        SessionErrors.add(request, e.getLocalizationKey());
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (PortalException e) {
 			SessionErrors.add(request, "portal-exception");
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (SystemException e) {
 	        SessionErrors.add(request, "system-exception");
 	        log.error(e);
@@ -158,8 +158,8 @@ public class BookList extends MVCPortlet {
 	        SessionMessages.add(request, "book-deleted");
 	    } catch (PortalException e) {
 			SessionErrors.add(request, "portal-exception");
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (SystemException e) {
 	        SessionErrors.add(request, "system-exception");
 	        log.error(e);
@@ -184,7 +184,7 @@ public class BookList extends MVCPortlet {
 			String firstName = ParamUtil.getString(request, "firstName");
 			String lastName = ParamUtil.getString(request, "lastName");
 			Date birthDate = ParamUtil.getDate(request, "birthDate", 
-					DateFormat.getDateInstance(DateFormat.SHORT));
+					new SimpleDateFormat("dd.MM.yyyy"));
 			String email = ParamUtil.getString(request, "email");
 			
 			validate(firstName, birthDate, email);
@@ -195,12 +195,12 @@ public class BookList extends MVCPortlet {
 	        response.setRenderParameter("authorId", String.valueOf(author.getAuthorId()));
 	    } catch (BookListException e) {
 	        SessionErrors.add(request, e.getLocalizationKey());
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (PortalException e) {
 			SessionErrors.add(request, "portal-exception");
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (SystemException e) {
 	        SessionErrors.add(request, "system-exception");
 	        log.error(e);
@@ -226,7 +226,7 @@ public class BookList extends MVCPortlet {
 		String firstName = ParamUtil.getString(request, "firstName");
 		String lastName = ParamUtil.getString(request, "lastName");
 		Date birthDate = ParamUtil.getDate(request, "birthDate", 
-				DateFormat.getDateInstance(DateFormat.SHORT));
+				new SimpleDateFormat("dd.MM.yyyy"));
 		String email = ParamUtil.getString(request, "email");
 		long bookId = ParamUtil.getLong(request, "bookId");
 		try {
@@ -246,12 +246,12 @@ public class BookList extends MVCPortlet {
 	        SessionMessages.add(request, "author-updated");
 	    } catch (BookListException e) {
 	        SessionErrors.add(request, e.getLocalizationKey());
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (PortalException e) {
 			SessionErrors.add(request, "portal-exception");
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (SystemException e) {
 	        SessionErrors.add(request, "system-exception");
 	        log.error(e);
@@ -295,8 +295,8 @@ public class BookList extends MVCPortlet {
 	        SessionMessages.add(request, "author-updated");
 	    } catch (PortalException e) {
 			SessionErrors.add(request, "portal-exception");
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (SystemException e) {
 	        SessionErrors.add(request, "system-exception");
 	        log.error(e);
@@ -336,8 +336,8 @@ public class BookList extends MVCPortlet {
 	    	SessionMessages.add(request, "AuthorUpdated");
 	    } catch (PortalException e) {
 			SessionErrors.add(request, "portal-exception");
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (SystemException e) {
 	        SessionErrors.add(request, "system-exception");
 	        log.error(e);
@@ -362,8 +362,8 @@ public class BookList extends MVCPortlet {
 	        SessionMessages.add(request, "authorDeleted");
 	    } catch (PortalException e) {
 			SessionErrors.add(request, "portal-exception");
-	        log.info(e);
-	        log.info(e.getMessage());
+	        log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (SystemException e) {
 	        SessionErrors.add(request, "system-exception");
 	        log.error(e);
@@ -438,13 +438,17 @@ public class BookList extends MVCPortlet {
 			prefs.store();
 			response.setPortletMode(PortletMode.VIEW);
 		} catch (ReadOnlyException e) {
-			e.printStackTrace();
+			log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (ValidatorException e) {
-			e.printStackTrace();
+			log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.warn(e);
+	        log.warn(e.getMessage());
 		} catch (PortletModeException e) {
-			e.printStackTrace();
+			log.warn(e);
+	        log.warn(e.getMessage());
 		}
 	}
 	
@@ -470,23 +474,27 @@ public class BookList extends MVCPortlet {
 	    		renderEditBook(renderRequest, renderResponse);
 	    	} else if (mode.equals("editAuthor")) {
 	    		renderEditAuthor(renderRequest, renderResponse);
-	    	} else if (mode.equals("bookList")) {
-	    		renderBookList(renderRequest, renderResponse);
-	    	} else if (mode.equals("authorList")) {
-	    		renderAuthorList(renderRequest, renderResponse);
+	    	} else if (mode.equals("addBookToAuthor")) {
+	    		renderAddBookToAuthor(renderRequest, renderResponse);
+	    	} else if (mode.equals("addAuthorToBook")) {
+	    		renderAddAuthorToBook(renderRequest, renderResponse);
 	    	} else {
 	    		renderView(renderRequest, renderResponse);
 	    	}
 	    	
 	    	super.render(renderRequest, renderResponse);
 	    } catch (PortalException e) {
-	    	
+	    	log.warn(e);
+	        log.warn(e.getMessage());
 	    } catch (SystemException e) {
-			e.printStackTrace();
+	    	log.error(e);
+	        log.error(e.getMessage());
 		} catch (PortletException e) {
-			e.printStackTrace();
+			log.error(e);
+	        log.error(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e);
+	        log.error(e.getMessage());
 		}
 	}
 	
@@ -500,29 +508,23 @@ public class BookList extends MVCPortlet {
         		prefs.getValues("bookPrefs", new String[]{}));
         List<String> authorPrefs = Arrays.asList(
         		prefs.getValues("authorPrefs", new String[]{}));
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> tableHeader = new ArrayList<String>();
         List<Book> books = BookLocalServiceUtil.getBooks(groupId);
         ArrayList<BookItem> bookItems = new ArrayList<BookItem>();
-        List<Author> authors = AuthorLocalServiceUtil.getAuthors(groupId);
-        ArrayList<AuthorItem> authorItems = new ArrayList<AuthorItem>();
         
-        names.add("Books");
-        names.add("Authors");
+        tableHeader.add("Books");
+        tableHeader.add("Authors");
         
         for (Book book : books) {
         	bookItems.add(new BookItem(book));
-        }
-        for (Author author : authors) {
-        	authorItems.add(new AuthorItem(author));
         }
         
         renderRequest.setAttribute("bookPrefs", 
         		new BookRenderPreferences(bookPrefs));
         renderRequest.setAttribute("authorPrefs", 
         		new AuthorRenderPreferences(authorPrefs));
-        renderRequest.setAttribute("names", names);
+        renderRequest.setAttribute("tableHeader", tableHeader);
         renderRequest.setAttribute("books", bookItems);
-        renderRequest.setAttribute("authors", authorItems);
 	}
 	
 	private void renderEditBook(RenderRequest renderRequest,
@@ -560,7 +562,7 @@ public class BookList extends MVCPortlet {
         		new BookRenderPreferences(bookPrefs));
 	}
 	
-	private void renderBookList(RenderRequest renderRequest,
+	private void renderAddBookToAuthor(RenderRequest renderRequest,
 	        RenderResponse renderResponse) throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
         		renderRequest);
@@ -582,7 +584,7 @@ public class BookList extends MVCPortlet {
         renderRequest.setAttribute("author", currAuthor);
 	}
 	
-	private void renderAuthorList(RenderRequest renderRequest,
+	private void renderAddAuthorToBook(RenderRequest renderRequest,
 	        RenderResponse renderResponse) throws PortalException, SystemException {
 		ServiceContext serviceContext = ServiceContextFactory.getInstance(
         		renderRequest);

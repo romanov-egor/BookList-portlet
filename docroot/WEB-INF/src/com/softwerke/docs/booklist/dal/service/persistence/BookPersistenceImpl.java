@@ -43,15 +43,14 @@ import com.liferay.portal.model.ModelListener;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.portal.service.persistence.impl.TableMapper;
 import com.liferay.portal.service.persistence.impl.TableMapperFactory;
-import com.softwerke.docs.booklist.NoSuchBookException;
+
+import com.softwerke.docs.booklist.dal.NoSuchBookException;
+import com.softwerke.docs.booklist.dal.model.Book;
 import com.softwerke.docs.booklist.dal.model.impl.BookImpl;
 import com.softwerke.docs.booklist.dal.model.impl.BookModelImpl;
-import com.softwerke.docs.booklist.model.Book;
-import com.softwerke.docs.booklist.service.persistence.AuthorPersistence;
-import com.softwerke.docs.booklist.service.persistence.BookPersistence;
-import com.softwerke.docs.booklist.service.persistence.BookUtil;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -274,7 +273,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a matching book could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a matching book could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -325,7 +324,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a matching book could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a matching book could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -382,7 +381,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param uuid the uuid
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a book with the primary key could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a book with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -630,12 +629,12 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 			new String[] { String.class.getName(), Long.class.getName() });
 
 	/**
-	 * Returns the book where uuid = &#63; and groupId = &#63; or throws a {@link com.softwerke.docs.booklist.NoSuchBookException} if it could not be found.
+	 * Returns the book where uuid = &#63; and groupId = &#63; or throws a {@link com.softwerke.docs.booklist.dal.NoSuchBookException} if it could not be found.
 	 *
 	 * @param uuid the uuid
 	 * @param groupId the group ID
 	 * @return the matching book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a matching book could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a matching book could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -1081,7 +1080,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a matching book could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a matching book could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -1137,7 +1136,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a matching book could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a matching book could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -1201,7 +1200,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param companyId the company ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a book with the primary key could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a book with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -1621,7 +1620,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a matching book could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a matching book could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -1672,7 +1671,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a matching book could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a matching book could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -1731,7 +1730,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a book with the primary key could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a book with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -2095,7 +2094,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 *
 	 * @param bookId the primary key of the book
 	 * @return the book that was removed
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a book with the primary key could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a book with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -2108,7 +2107,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 *
 	 * @param primaryKey the primary key of the book
 	 * @return the book that was removed
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a book with the primary key could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a book with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -2177,7 +2176,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	}
 
 	@Override
-	public Book updateImpl(com.softwerke.docs.booklist.model.Book book)
+	public Book updateImpl(com.softwerke.docs.booklist.dal.model.Book book)
 		throws SystemException {
 		book = toUnwrappedModel(book);
 
@@ -2309,7 +2308,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 *
 	 * @param primaryKey the primary key of the book
 	 * @return the book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a book with the primary key could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a book with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -2330,11 +2329,11 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	}
 
 	/**
-	 * Returns the book with the primary key or throws a {@link com.softwerke.docs.booklist.NoSuchBookException} if it could not be found.
+	 * Returns the book with the primary key or throws a {@link com.softwerke.docs.booklist.dal.NoSuchBookException} if it could not be found.
 	 *
 	 * @param bookId the primary key of the book
 	 * @return the book
-	 * @throws com.softwerke.docs.booklist.NoSuchBookException if a book with the primary key could not be found
+	 * @throws com.softwerke.docs.booklist.dal.NoSuchBookException if a book with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
@@ -2582,8 +2581,8 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<com.softwerke.docs.booklist.model.Author> getAuthors(long pk)
-		throws SystemException {
+	public List<com.softwerke.docs.booklist.dal.model.Author> getAuthors(
+		long pk) throws SystemException {
 		return getAuthors(pk, QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 	}
 
@@ -2601,8 +2600,8 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<com.softwerke.docs.booklist.model.Author> getAuthors(long pk,
-		int start, int end) throws SystemException {
+	public List<com.softwerke.docs.booklist.dal.model.Author> getAuthors(
+		long pk, int start, int end) throws SystemException {
 		return getAuthors(pk, start, end, null);
 	}
 
@@ -2621,8 +2620,8 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 * @throws SystemException if a system exception occurred
 	 */
 	@Override
-	public List<com.softwerke.docs.booklist.model.Author> getAuthors(long pk,
-		int start, int end, OrderByComparator orderByComparator)
+	public List<com.softwerke.docs.booklist.dal.model.Author> getAuthors(
+		long pk, int start, int end, OrderByComparator orderByComparator)
 		throws SystemException {
 		return bookToAuthorTableMapper.getRightBaseModels(pk, start, end,
 			orderByComparator);
@@ -2694,7 +2693,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 */
 	@Override
 	public void addAuthor(long pk,
-		com.softwerke.docs.booklist.model.Author author)
+		com.softwerke.docs.booklist.dal.model.Author author)
 		throws SystemException {
 		bookToAuthorTableMapper.addTableMapping(pk, author.getPrimaryKey());
 	}
@@ -2722,9 +2721,9 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 */
 	@Override
 	public void addAuthors(long pk,
-		List<com.softwerke.docs.booklist.model.Author> authors)
+		List<com.softwerke.docs.booklist.dal.model.Author> authors)
 		throws SystemException {
-		for (com.softwerke.docs.booklist.model.Author author : authors) {
+		for (com.softwerke.docs.booklist.dal.model.Author author : authors) {
 			bookToAuthorTableMapper.addTableMapping(pk, author.getPrimaryKey());
 		}
 	}
@@ -2761,7 +2760,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 */
 	@Override
 	public void removeAuthor(long pk,
-		com.softwerke.docs.booklist.model.Author author)
+		com.softwerke.docs.booklist.dal.model.Author author)
 		throws SystemException {
 		bookToAuthorTableMapper.deleteTableMapping(pk, author.getPrimaryKey());
 	}
@@ -2790,9 +2789,9 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 */
 	@Override
 	public void removeAuthors(long pk,
-		List<com.softwerke.docs.booklist.model.Author> authors)
+		List<com.softwerke.docs.booklist.dal.model.Author> authors)
 		throws SystemException {
-		for (com.softwerke.docs.booklist.model.Author author : authors) {
+		for (com.softwerke.docs.booklist.dal.model.Author author : authors) {
 			bookToAuthorTableMapper.deleteTableMapping(pk,
 				author.getPrimaryKey());
 		}
@@ -2835,13 +2834,13 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	 */
 	@Override
 	public void setAuthors(long pk,
-		List<com.softwerke.docs.booklist.model.Author> authors)
+		List<com.softwerke.docs.booklist.dal.model.Author> authors)
 		throws SystemException {
 		try {
 			long[] authorPKs = new long[authors.size()];
 
 			for (int i = 0; i < authors.size(); i++) {
-				com.softwerke.docs.booklist.model.Author author = authors.get(i);
+				com.softwerke.docs.booklist.dal.model.Author author = authors.get(i);
 
 				authorPKs[i] = author.getPrimaryKey();
 			}
@@ -2867,7 +2866,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 	public void afterPropertiesSet() {
 		String[] listenerClassNames = StringUtil.split(GetterUtil.getString(
 					com.liferay.util.service.ServiceProps.get(
-						"value.object.listener.com.softwerke.docs.booklist.model.Book")));
+						"value.object.listener.com.softwerke.docs.booklist.dal.model.Book")));
 
 		if (listenerClassNames.length > 0) {
 			try {
@@ -2898,7 +2897,7 @@ public class BookPersistenceImpl extends BasePersistenceImpl<Book>
 
 	@BeanReference(type = AuthorPersistence.class)
 	protected AuthorPersistence authorPersistence;
-	protected TableMapper<Book, com.softwerke.docs.booklist.model.Author> bookToAuthorTableMapper;
+	protected TableMapper<Book, com.softwerke.docs.booklist.dal.model.Author> bookToAuthorTableMapper;
 	private static final String _SQL_SELECT_BOOK = "SELECT book FROM Book book";
 	private static final String _SQL_SELECT_BOOK_WHERE = "SELECT book FROM Book book WHERE ";
 	private static final String _SQL_COUNT_BOOK = "SELECT COUNT(book) FROM Book book";

@@ -6,7 +6,7 @@
 		<portlet-name>book-list</portlet-name>
 		<display-name>Book List</display-name>
 		<portlet-class>
-			com.softwerke.docs.booklist.portlet.BookList
+			com.softwerke.docs.booklist.businesslogic.portlet.BookList
 		</portlet-class>
 		<init-param>
 			<name>view-template</name>

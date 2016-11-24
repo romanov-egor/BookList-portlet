@@ -31,10 +31,10 @@ import com.liferay.portal.service.BaseLocalServiceImpl;
 import com.liferay.portal.service.PersistedModelLocalServiceRegistryUtil;
 import com.liferay.portal.service.persistence.UserPersistence;
 
-import com.softwerke.docs.booklist.model.Book;
-import com.softwerke.docs.booklist.service.BookLocalService;
-import com.softwerke.docs.booklist.service.persistence.AuthorPersistence;
-import com.softwerke.docs.booklist.service.persistence.BookPersistence;
+import com.softwerke.docs.booklist.dal.model.Book;
+import com.softwerke.docs.booklist.dal.service.BookLocalService;
+import com.softwerke.docs.booklist.dal.service.persistence.AuthorPersistence;
+import com.softwerke.docs.booklist.dal.service.persistence.BookPersistence;
 
 import java.io.Serializable;
 
@@ -51,7 +51,7 @@ import javax.sql.DataSource;
  *
  * @author rei
  * @see com.softwerke.docs.booklist.dal.service.impl.BookLocalServiceImpl
- * @see com.softwerke.docs.booklist.service.BookLocalServiceUtil
+ * @see com.softwerke.docs.booklist.dal.service.BookLocalServiceUtil
  * @generated
  */
 public abstract class BookLocalServiceBaseImpl extends BaseLocalServiceImpl
@@ -59,7 +59,7 @@ public abstract class BookLocalServiceBaseImpl extends BaseLocalServiceImpl
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Always use {@link com.softwerke.docs.booklist.service.BookLocalServiceUtil} to access the book local service.
+	 * Never modify or reference this class directly. Always use {@link com.softwerke.docs.booklist.dal.service.BookLocalServiceUtil} to access the book local service.
 	 */
 
 	/**
@@ -475,7 +475,7 @@ public abstract class BookLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 *
 	 * @return the author local service
 	 */
-	public com.softwerke.docs.booklist.service.AuthorLocalService getAuthorLocalService() {
+	public com.softwerke.docs.booklist.dal.service.AuthorLocalService getAuthorLocalService() {
 		return authorLocalService;
 	}
 
@@ -485,27 +485,8 @@ public abstract class BookLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 * @param authorLocalService the author local service
 	 */
 	public void setAuthorLocalService(
-		com.softwerke.docs.booklist.service.AuthorLocalService authorLocalService) {
+		com.softwerke.docs.booklist.dal.service.AuthorLocalService authorLocalService) {
 		this.authorLocalService = authorLocalService;
-	}
-
-	/**
-	 * Returns the author remote service.
-	 *
-	 * @return the author remote service
-	 */
-	public com.softwerke.docs.booklist.service.AuthorService getAuthorService() {
-		return authorService;
-	}
-
-	/**
-	 * Sets the author remote service.
-	 *
-	 * @param authorService the author remote service
-	 */
-	public void setAuthorService(
-		com.softwerke.docs.booklist.service.AuthorService authorService) {
-		this.authorService = authorService;
 	}
 
 	/**
@@ -531,7 +512,7 @@ public abstract class BookLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 *
 	 * @return the book local service
 	 */
-	public com.softwerke.docs.booklist.service.BookLocalService getBookLocalService() {
+	public com.softwerke.docs.booklist.dal.service.BookLocalService getBookLocalService() {
 		return bookLocalService;
 	}
 
@@ -541,7 +522,7 @@ public abstract class BookLocalServiceBaseImpl extends BaseLocalServiceImpl
 	 * @param bookLocalService the book local service
 	 */
 	public void setBookLocalService(
-		com.softwerke.docs.booklist.service.BookLocalService bookLocalService) {
+		com.softwerke.docs.booklist.dal.service.BookLocalService bookLocalService) {
 		this.bookLocalService = bookLocalService;
 	}
 
@@ -662,13 +643,13 @@ public abstract class BookLocalServiceBaseImpl extends BaseLocalServiceImpl
 
 		_classLoader = clazz.getClassLoader();
 
-		PersistedModelLocalServiceRegistryUtil.register("com.softwerke.docs.booklist.model.Book",
+		PersistedModelLocalServiceRegistryUtil.register("com.softwerke.docs.booklist.dal.model.Book",
 			bookLocalService);
 	}
 
 	public void destroy() {
 		PersistedModelLocalServiceRegistryUtil.unregister(
-			"com.softwerke.docs.booklist.model.Book");
+			"com.softwerke.docs.booklist.dal.model.Book");
 	}
 
 	/**
@@ -739,14 +720,12 @@ public abstract class BookLocalServiceBaseImpl extends BaseLocalServiceImpl
 		}
 	}
 
-	@BeanReference(type = com.softwerke.docs.booklist.service.AuthorLocalService.class)
-	protected com.softwerke.docs.booklist.service.AuthorLocalService authorLocalService;
-	@BeanReference(type = com.softwerke.docs.booklist.service.AuthorService.class)
-	protected com.softwerke.docs.booklist.service.AuthorService authorService;
+	@BeanReference(type = com.softwerke.docs.booklist.dal.service.AuthorLocalService.class)
+	protected com.softwerke.docs.booklist.dal.service.AuthorLocalService authorLocalService;
 	@BeanReference(type = AuthorPersistence.class)
 	protected AuthorPersistence authorPersistence;
-	@BeanReference(type = com.softwerke.docs.booklist.service.BookLocalService.class)
-	protected com.softwerke.docs.booklist.service.BookLocalService bookLocalService;
+	@BeanReference(type = com.softwerke.docs.booklist.dal.service.BookLocalService.class)
+	protected com.softwerke.docs.booklist.dal.service.BookLocalService bookLocalService;
 	@BeanReference(type = BookPersistence.class)
 	protected BookPersistence bookPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)

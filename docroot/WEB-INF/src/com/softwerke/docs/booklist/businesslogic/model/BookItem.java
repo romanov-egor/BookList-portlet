@@ -2,12 +2,13 @@ package com.softwerke.docs.booklist.businesslogic.model;
 
 import java.util.*;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.softwerke.docs.booklist.model.Author;
-import com.softwerke.docs.booklist.model.Book;
-import com.softwerke.docs.booklist.service.AuthorLocalServiceUtil;
+import com.softwerke.docs.booklist.dal.model.Author;
+import com.softwerke.docs.booklist.dal.model.Book;
+import com.softwerke.docs.booklist.dal.service.AuthorLocalServiceUtil;
 
 /**
  * Model class for {@link com.softwerke.docs.booklist.model.Book Book}
@@ -42,9 +43,8 @@ public class BookItem {
 	}
 
 	public String getReleaseDate() {
-		String date = releaseDate.toString();
-		String[] tmp = date.split(" ");
-		return String.format("%s %s %s", tmp[2], tmp[1], tmp[5]); 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+		return dateFormat.format(this.releaseDate); 
 	}
 
 	public ArrayList<Author> getRelatedAuthors() {

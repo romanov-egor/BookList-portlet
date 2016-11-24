@@ -18,7 +18,7 @@ import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 
-import com.softwerke.docs.booklist.model.Author;
+import com.softwerke.docs.booklist.dal.model.Author;
 
 import java.io.Externalizable;
 import java.io.IOException;

@@ -20,10 +20,10 @@
 </portlet:renderURL>
 
 <portlet:renderURL var="listURL">
-	<portlet:param name="mvcPath" value="/html/booklist/bookList.jsp"></portlet:param>
+	<portlet:param name="mvcPath" value="/html/booklist/addBookToAuthor.jsp"></portlet:param>
 	<portlet:param name="backURL" value="/html/booklist/editAuthor.jsp"/>
 	<portlet:param name="authorId" value="${author.getId()}"/>
-	<portlet:param name="mode" value="bookList" />
+	<portlet:param name="mode" value="addBookToAuthor" />
 </portlet:renderURL>
 
 <portlet:actionURL name="deleteAuthor" var="deleteURL">

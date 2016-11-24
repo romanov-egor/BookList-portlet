@@ -16,7 +16,7 @@ package com.softwerke.docs.booklist.dal.service.http;
 
 /**
  * Provides the SOAP utility for the
- * {@link com.softwerke.docs.booklist.service.AuthorServiceUtil} service utility. The
+ * {@link com.softwerke.docs.booklist.dal.service.AuthorServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -24,10 +24,10 @@ package com.softwerke.docs.booklist.dal.service.http;
  * <p>
  * ServiceBuilder follows certain rules in translating the methods. For example,
  * if the method in the service utility returns a {@link java.util.List}, that
- * is translated to an array of {@link com.softwerke.docs.booklist.model.AuthorSoap}.
+ * is translated to an array of {@link com.softwerke.docs.booklist.dal.model.AuthorSoap}.
  * If the method in the service utility returns a
- * {@link com.softwerke.docs.booklist.model.Author}, that is translated to a
- * {@link com.softwerke.docs.booklist.model.AuthorSoap}. Methods that SOAP cannot
+ * {@link com.softwerke.docs.booklist.dal.model.Author}, that is translated to a
+ * {@link com.softwerke.docs.booklist.dal.model.AuthorSoap}. Methods that SOAP cannot
  * safely wire are skipped.
  * </p>
  *
@@ -50,8 +50,8 @@ package com.softwerke.docs.booklist.dal.service.http;
  *
  * @author rei
  * @see AuthorServiceHttp
- * @see com.softwerke.docs.booklist.model.AuthorSoap
- * @see com.softwerke.docs.booklist.service.AuthorServiceUtil
+ * @see com.softwerke.docs.booklist.dal.model.AuthorSoap
+ * @see com.softwerke.docs.booklist.dal.service.AuthorServiceUtil
  * @generated
  */
 public class AuthorServiceSoap {

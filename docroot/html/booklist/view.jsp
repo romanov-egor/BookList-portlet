@@ -24,7 +24,7 @@
 	<br>
 	<table border="1">
 		<tr>
-			<c:forEach items="${names}" var="name">
+			<c:forEach items="${tableHeader}" var="name">
 				<th>${name}</th>
 			</c:forEach>
 		</tr>
