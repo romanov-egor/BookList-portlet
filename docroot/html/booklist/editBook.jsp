@@ -62,9 +62,7 @@
 		<input name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}"></input>
     </label>
     <c:if test="${book != null}">
-    	<div class="btn">
-    		<a href="${listURL}">Open full list of Authors</a>
-    	</div>
+    	<a class="btn" href="${listURL}">Open full list of Authors</a>
     	<h2>Authors of this Book</h2>
     	<table>
 			<c:forEach items="${book.getRelatedAuthors()}" var="currAuthor">
@@ -76,7 +74,7 @@
 				</portlet:renderURL>
 				<tr>
 					<td>
-						<a href="${editAuthorURL}">
+						<a class="table-link" href="${editAuthorURL}">
 							<c:if test="${authorPrefs.isFirstNameVisible()}">
 								${currAuthor.getFirstName()}
 							</c:if>
@@ -97,12 +95,8 @@
 	</c:if>
 	<input class="btn" type="submit" name="submit" value="Submit changes" />
 	<c:if test="${book != null}">
-		<div class="btn">
-			<a href="${deleteURL}">Delete this Book</a>
-		</div>
+		<a class="btn" href="${deleteURL}">Delete this Book</a>
 	</c:if>
-		<div class="btn">
-			<a href="${viewURL}">Cancel</a>
-		</div>
+	<a class="btn" href="${viewURL}">Cancel</a>
 </form>
 

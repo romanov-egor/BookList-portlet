@@ -14,12 +14,8 @@
 	<portlet:param name="mode" value="editAuthor" />
 </portlet:renderURL>
 
-<div class="btn">
-	<a href="${addBookURL}">Add Book</a>
-</div>
-<div class="btn">
-	<a href="${addAuthorURL}">Add Author</a>
-</div>
+<a class="btn" href="${addBookURL}">Add Book</a>
+<a class="btn" href="${addAuthorURL}">Add Author</a>
 <table>
 	<tr>
 		<c:forEach items="${tableHeader}" var="name">
@@ -35,7 +31,7 @@
 					<portlet:param name="bookId" value="${currBook.getId()}" />
 					<portlet:param name="mode" value="editBook" />
 				</portlet:renderURL>
-				<a href="${editBookURL}">
+				<a class="table-link" href="${editBookURL}">
 					<c:if test="${bookPrefs.isTitleVisible()}">
 						${currBook.getTitle()} 
 					</c:if>
@@ -59,7 +55,7 @@
 										<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
 										<portlet:param name="mode" value="editAuthor" />
 									</portlet:renderURL>
-									<a href="${editAuthorURL}">
+									<a class="table-link" href="${editAuthorURL}">
 										<c:if test="${authorPrefs.isFirstNameVisible()}">
 											${currAuthor.getFirstName()}
 										</c:if>

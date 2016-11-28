@@ -50,23 +50,26 @@
 </c:if>
 	
 <form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
-	<label>First Name
+	<label>
+		First Name
 		<input name="<portlet:namespace />firstName" type="text" value="${firstName}" />
 	</label>
-	<p>Last Name</p> 
-	<input name="<portlet:namespace />lastName" type="text" value="${lastName}"></input>
-	<p>Birth Date</p>
-	<input name="<portlet:namespace />birthDate" type="date" value="${birthDate}"></input>
-    <p>Email</p>
-    <input name="<portlet:namespace />email" type="date" value="${email}"></input>
+	<label>
+		Last Name 
+		<input name="<portlet:namespace />lastName" type="text" value="${lastName}" />
+	</label>
+	<label>
+		Birth Date
+		<input name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
+	</label>
+    <label>
+    	Email
+    	<input name="<portlet:namespace />email" type="date" value="${email}" />
+    </label>
     <c:if test="${author != null}">
-	    <p>
-	        Books
-	        <a href="${listURL}">
-	        	<button type="button">Open Book list</button>
-	        </a>
-	    </p>
-	    <table border="1">
+	    <a class="btn" href="${listURL}">Open Book list</a>
+	    <h2>Books of this Author</h2>
+	    <table>
 			<c:forEach items="${author.getRelatedBooks()}" var="currBook">
 				<portlet:renderURL var="editBookURL">
 					<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
@@ -76,7 +79,7 @@
 				</portlet:renderURL>
 				<tr>
 					<td>
-						<a href="${editBookURL}">
+						<a class="table-link" href="${editBookURL}">
 							<c:if test="${bookPrefs.isTitleVisible()}">
 								${currBook.getTitle()} 
 							</c:if>
@@ -92,14 +95,10 @@
 			</c:forEach>
 		</table>
 	</c:if>
-<button type="submit">Submit</button>
-<c:if test="${author != null}">
-	<a href="${deleteURL}">
-		<button type="button">Delete this Author</button>
-	</a>
-</c:if>
-<a href="${viewURL}">
-	<button type="button">Cancel</button>
-</a>
+	<input class="btn" type="submit" name="submit" value="Submit changes" />
+	<c:if test="${author != null}">
+		<a class="btn" href="${deleteURL}">Delete this Author</a>
+	</c:if>
+	<a class="btn" href="${viewURL}">Cancel</a>
 </form>
 

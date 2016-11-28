@@ -9,7 +9,7 @@
 	<portlet:param name="mode" value="editAuthor" />
 </portlet:renderURL>
 
-<table border="1">
+<table>
 	<tr>
 		<th>Title</th>
 		<th>ISBN</th>
@@ -27,9 +27,7 @@
 			<td>${currBook.getIsbn()}</td>
 			<td>${currBook.getReleaseDate()}</td>
 			<td>
-				<a href="${removeBookForAuthorURL}">
-					<button type="button">Remove</button>
-				</a>
+				<a class="table-btn" href="${removeBookForAuthorURL}">Remove</a>
 			</td>
 		</tr>
 	</c:forEach>			
@@ -45,14 +43,9 @@
 			<td>${currBook.getIsbn()}</td>
 			<td>${currBook.getReleaseDate()}</td>
 			<td>
-				<a href="${addBookForAuthorURL}">
-					<button type="button">Add</button>
-				</a>
+				<a class="table-btn" href="${addBookForAuthorURL}">Add</a>
 			</td>
 		</tr>
 	</c:forEach>
 </table>
-<br>
-<a href="${backURL}">
-	<button type="button">Cancel</button>
-</a>
+<a class="btn" href="${backURL}">Cancel</a>

@@ -9,7 +9,7 @@
 	<portlet:param name="mode" value="editBook" />
 </portlet:renderURL>
 
-<table border="1">
+<table>
 	<tr>
 		<th>First Name</th>
 		<th>Last Name</th>
@@ -29,9 +29,7 @@
 			<td>${currAuthor.getBirthDate()}</td>
 			<td>${currAuthor.getEmail()}</td>
 			<td>
-				<a href="${removeAuthorForBookURL}">
-					<button type="button">Remove</button>
-				</a>
+				<a class="table-btn" href="${removeAuthorForBookURL}">Remove</a>
 			</td>
 		</tr>
 	</c:forEach>
@@ -47,13 +45,9 @@
 			<td>${currAuthor.getBirthDate()}</td>
 			<td>${currAuthor.getEmail()}</td>
 			<td>
-				<a href="${addAuthorForBookURL}">
-					<button type="button">Add</button>
-				</a>
+				<a class="table-btn" href="${addAuthorForBookURL}">Add</a>
 			</td>
 		</tr>
 	</c:forEach>
 </table>
-<a href="${backURL}">
-	<button type="button">Cancel</button>
-</a>
+<a class="btn" href="${backURL}">Cancel</a>
