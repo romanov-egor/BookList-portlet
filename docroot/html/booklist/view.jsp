@@ -14,17 +14,19 @@
 	<portlet:param name="mode" value="editAuthor" />
 </portlet:renderURL>
 
-<a class="btn" href="${addBookURL}">Add Book</a>
-<a class="btn" href="${addAuthorURL}">Add Author</a>
-<table>
+<div>
+	<a class="btn" href="${addBookURL}">Add Book</a>
+	<a class="btn" href="${addAuthorURL}">Add Author</a>
+</div>
+<table class="main-table">
 	<tr>
 		<c:forEach items="${tableHeader}" var="name">
-			<th scope="col">${name}</th>
+			<th class="main-table-td" scope="col">${name}</th>
 		</c:forEach>
 	</tr>
 	<c:forEach items="${books}" var="currBook">
 		<tr>
-			<td>
+			<td class="main-table-td">
 				<portlet:renderURL var="editBookURL">
 					<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
 					<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
@@ -33,17 +35,17 @@
 				</portlet:renderURL>
 				<a class="table-link" href="${editBookURL}">
 					<c:if test="${bookPrefs.isTitleVisible()}">
-						${currBook.getTitle()} 
+						${currBook.getTitle()}
 					</c:if>
 					<c:if test="${bookPrefs.isIsbnVisible()}">
-						${currBook.getISBN()} 
+						${currBook.getISBN()}
 					</c:if>
 					<c:if test="${bookPrefs.isReleaseDateVisible()}">
-						${currBook.getReleaseDate()} 
+						${currBook.getReleaseDate()}
 					</c:if>
 				</a>
 			</td>
-			<td>
+			<td class="main-table-td">
 				<c:if test="${currBook.getRelatedAuthors() != null}">
 					<c:forEach items="${currBook.getRelatedAuthors()}" var="currAuthor">
 						<div class="cell-item">

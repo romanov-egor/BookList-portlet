@@ -49,31 +49,43 @@
 </c:if>
 
 <form name="<portlet:namespace />fm1" action="${bookDetails}" method="POST">
-	<label>
-		Title
-		<input name="<portlet:namespace />title" type="text" value="${title}"></input>
-	</label>
-	<label>
-		ISBN 
-		<input name="<portlet:namespace />ISBN" type="text" value="${ISBN}"></input>
-	</label>
-	<label>
-		Release Date
-		<input name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}"></input>
-    </label>
-    <c:if test="${book != null}">
-    	<a class="btn" href="${listURL}">Open full list of Authors</a>
-    	<h2>Authors of this Book</h2>
-    	<table>
-			<c:forEach items="${book.getRelatedAuthors()}" var="currAuthor">
-				<portlet:renderURL var="editAuthorURL">
-					<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
-					<portlet:param name="backURL" value="/html/booklist/editBook.jsp"/>
-					<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
-					<portlet:param name="mode" value="editAuthor" />
-				</portlet:renderURL>
-				<tr>
-					<td>
+	<table>
+		<tr>
+			<td>Title</td>
+			<td>
+				<input name="<portlet:namespace />title" type="text" value="${title}" />
+			</td>
+		</tr>
+		<tr>
+			<td>ISBN</td>
+			<td>
+				<input name="<portlet:namespace />ISBN" type="text" value="${ISBN}" />
+			</td>
+		</tr>
+		<tr>
+			<td>Release Date</td>
+			<td>
+				<input name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}" />
+			</td>
+		</tr>
+	</table>
+	<button class="btn" type="submit" name="submit">Submit changes</button>
+	<c:if test="${book != null}">
+		<a class="btn" href="${deleteURL}">Delete this Book</a>
+	</c:if>
+	<a class="btn" href="${viewURL}">Cancel</a>
+	<p>
+	    <c:if test="${book != null}">
+	    	<h2>Authors of this Book</h2>
+	    	<ul>
+				<c:forEach items="${book.getRelatedAuthors()}" var="currAuthor">
+					<portlet:renderURL var="editAuthorURL">
+						<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
+						<portlet:param name="backURL" value="/html/booklist/editBook.jsp"/>
+						<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
+						<portlet:param name="mode" value="editAuthor" />
+					</portlet:renderURL>
+					<li>
 						<a class="table-link" href="${editAuthorURL}">
 							<c:if test="${authorPrefs.isFirstNameVisible()}">
 								${currAuthor.getFirstName()}
@@ -88,15 +100,11 @@
 								${currAuthor.getEmail()}
 							</c:if>
 						</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</c:if>
-	<input class="btn" type="submit" name="submit" value="Submit changes" />
-	<c:if test="${book != null}">
-		<a class="btn" href="${deleteURL}">Delete this Book</a>
-	</c:if>
-	<a class="btn" href="${viewURL}">Cancel</a>
+					</li>
+				</c:forEach>
+			</ul>
+			<a class="btn" href="${listURL}">Add or Remove Authors</a>
+		</c:if>
+	</p>
 </form>
 
