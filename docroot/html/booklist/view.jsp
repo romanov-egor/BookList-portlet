@@ -44,36 +44,32 @@
 				</a>
 			</td>
 			<td>
-				<table>
-					<c:if test="${currBook.getRelatedAuthors() != null}">
-						<c:forEach items="${currBook.getRelatedAuthors()}" var="currAuthor">
-							<tr>
-								<td>
-									<portlet:renderURL var="editAuthorURL">
-										<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
-										<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
-										<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
-										<portlet:param name="mode" value="editAuthor" />
-									</portlet:renderURL>
-									<a class="table-link" href="${editAuthorURL}">
-										<c:if test="${authorPrefs.isFirstNameVisible()}">
-											${currAuthor.getFirstName()}
-										</c:if>
-										<c:if test="${authorPrefs.isLastNameVisible()}">
-											${currAuthor.getLastName()}
-										</c:if>
-										<c:if test="${authorPrefs.isBirthDateVisible()}">
-											${currAuthor.getBirthDate()}
-										</c:if>
-										<c:if test="${authorPrefs.isEmailVisible()}">
-											${currAuthor.getEmail()}
-										</c:if>
-									</a>
-								</td>
-							</tr>
-						</c:forEach>
-					</c:if>			
-				</table>
+				<c:if test="${currBook.getRelatedAuthors() != null}">
+					<c:forEach items="${currBook.getRelatedAuthors()}" var="currAuthor">
+						<div class="cell-item">
+							<portlet:renderURL var="editAuthorURL">
+								<portlet:param name="mvcPath" value="/html/booklist/editAuthor.jsp"></portlet:param>
+								<portlet:param name="backURL" value="/html/booklist/view.jsp"/>
+								<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
+								<portlet:param name="mode" value="editAuthor" />
+							</portlet:renderURL>
+							<a class="table-link" href="${editAuthorURL}">
+								<c:if test="${authorPrefs.isFirstNameVisible()}">
+									${currAuthor.getFirstName()}
+								</c:if>
+								<c:if test="${authorPrefs.isLastNameVisible()}">
+									${currAuthor.getLastName()}
+								</c:if>
+								<c:if test="${authorPrefs.isBirthDateVisible()}">
+									${currAuthor.getBirthDate()}
+								</c:if>
+								<c:if test="${authorPrefs.isEmailVisible()}">
+									${currAuthor.getEmail()}
+								</c:if>
+							</a>
+						</div>
+					</c:forEach>
+				</c:if>			
 			</td>
 		</tr>
 	</c:forEach>
