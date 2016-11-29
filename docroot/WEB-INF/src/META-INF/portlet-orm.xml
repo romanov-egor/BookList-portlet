@@ -7,7 +7,7 @@
 			<access>PROPERTY</access>
 		</persistence-unit-defaults>
 	</persistence-unit-metadata>
-	<mapped-superclass class="com.softwerke.docs.booklist.model.impl.AuthorModelImpl">
+	<mapped-superclass class="com.softwerke.docs.booklist.dal.model.impl.AuthorModelImpl">
 		<attributes>
 			<id name="authorId" />
 			<basic name="uuid">
@@ -35,7 +35,7 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<mapped-superclass class="com.softwerke.docs.booklist.model.impl.BookModelImpl">
+	<mapped-superclass class="com.softwerke.docs.booklist.dal.model.impl.BookModelImpl">
 		<attributes>
 			<id name="bookId" />
 			<basic name="uuid">
@@ -62,11 +62,11 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<entity class="com.softwerke.docs.booklist.model.impl.AuthorImpl" name="Author">
+	<entity class="com.softwerke.docs.booklist.dal.model.impl.AuthorImpl" name="Author">
 		<table name="BL_Author" />
 		<attributes />
 	</entity>
-	<entity class="com.softwerke.docs.booklist.model.impl.BookImpl" name="Book">
+	<entity class="com.softwerke.docs.booklist.dal.model.impl.BookImpl" name="Book">
 		<table name="BL_Book" />
 		<attributes />
 	</entity>

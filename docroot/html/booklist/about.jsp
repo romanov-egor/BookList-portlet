@@ -2,4 +2,6 @@
 
 <portlet:defineObjects />
 
-This is the <b>Book List</b> portlet in About mode.
+<p>This is the <b>Book List</b> portlet in About mode.</p>
+<p>This portlet was created for study purposes</p>
+<p>Romanov Egor, Softwerke, 2016</p>

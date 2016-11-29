@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-	<bean id="com.softwerke.docs.booklist.service.AuthorLocalService" class="com.softwerke.docs.booklist.service.impl.AuthorLocalServiceImpl" />
-	<bean id="com.softwerke.docs.booklist.service.AuthorService" class="com.softwerke.docs.booklist.service.impl.AuthorServiceImpl" />
-	<bean id="com.softwerke.docs.booklist.service.persistence.AuthorPersistence" class="com.softwerke.docs.booklist.service.persistence.AuthorPersistenceImpl" parent="basePersistence" />
-	<bean id="com.softwerke.docs.booklist.service.BookLocalService" class="com.softwerke.docs.booklist.service.impl.BookLocalServiceImpl" />
-	<bean id="com.softwerke.docs.booklist.service.BookService" class="com.softwerke.docs.booklist.service.impl.BookServiceImpl" />
-	<bean id="com.softwerke.docs.booklist.service.persistence.BookPersistence" class="com.softwerke.docs.booklist.service.persistence.BookPersistenceImpl" parent="basePersistence" />
+	<bean id="com.softwerke.docs.booklist.dal.service.AuthorLocalService" class="com.softwerke.docs.booklist.dal.service.impl.AuthorLocalServiceImpl" />
+	<bean id="com.softwerke.docs.booklist.dal.service.persistence.AuthorPersistence" class="com.softwerke.docs.booklist.dal.service.persistence.AuthorPersistenceImpl" parent="basePersistence" />
+	<bean id="com.softwerke.docs.booklist.dal.service.BookLocalService" class="com.softwerke.docs.booklist.dal.service.impl.BookLocalServiceImpl" />
+	<bean id="com.softwerke.docs.booklist.dal.service.persistence.BookPersistence" class="com.softwerke.docs.booklist.dal.service.persistence.BookPersistenceImpl" parent="basePersistence" />
 </beans>

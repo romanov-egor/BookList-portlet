@@ -2,9 +2,9 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-lazy="false" auto-import="false">
-	<import class="com.softwerke.docs.booklist.model.Author" />
-	<import class="com.softwerke.docs.booklist.model.Book" />
-	<class name="com.softwerke.docs.booklist.model.impl.AuthorImpl" table="BL_Author">
+	<import class="com.softwerke.docs.booklist.dal.model.Author" />
+	<import class="com.softwerke.docs.booklist.dal.model.Book" />
+	<class name="com.softwerke.docs.booklist.dal.model.impl.AuthorImpl" table="BL_Author">
 		<cache usage="read-write" />
 		<id name="authorId" type="long">
 			<generator class="assigned" />
@@ -21,7 +21,7 @@
 		<property name="birthDate" type="org.hibernate.type.TimestampType" />
 		<property name="email" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
-	<class name="com.softwerke.docs.booklist.model.impl.BookImpl" table="BL_Book">
+	<class name="com.softwerke.docs.booklist.dal.model.impl.BookImpl" table="BL_Book">
 		<cache usage="read-write" />
 		<id name="bookId" type="long">
 			<generator class="assigned" />

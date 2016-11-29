@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
-<service-builder package-path="com.softwerke.docs.booklist">
+<service-builder package-path="com.softwerke.docs.booklist.dal">
 	<author>rei</author>
 	<namespace>BL</namespace>
 	<entity name="Book" local-service="true" uuid="true" remote-service="false">
@@ -21,6 +21,7 @@
 		<column name="userName" type="String"></column>
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
+		
         <column name="title" type="String"></column>
         <column name="isbn" type="String"></column>
         <column name="releaseDate" type="Date"></column>
@@ -32,7 +33,7 @@
             <finder-column name="groupId"></finder-column>
         </finder>
 	</entity>
-	<entity name="Author" local-service="true" uuid="true">
+	<entity name="Author" local-service="true" uuid="true" remote-service="false">
 
 
 		<!-- PK fields -->
@@ -50,6 +51,7 @@
 		<column name="userName" type="String"></column>
 		<column name="createDate" type="Date"></column>
 		<column name="modifiedDate" type="Date"></column>
+		
         <column name="firstName" type="String"></column>
         <column name="lastName" type="String"></column>
         <column name="birthDate" type="Date"></column>
@@ -62,12 +64,4 @@
             <finder-column name="groupId"></finder-column>
         </finder>
 	</entity>
-    <exceptions>
-        <exception>BookTitle</exception>
-        <exception>BookISBN</exception>
-        <exception>BookReleaseDate</exception>
-        <exception>AuthorFirstName</exception>
-        <exception>AuthorEmail</exception>
-        <exception>AuthorBirthDate</exception>
-    </exceptions>
 </service-builder>
