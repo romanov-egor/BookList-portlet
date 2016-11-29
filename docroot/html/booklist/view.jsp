@@ -21,7 +21,7 @@
 <table class="main-table">
 	<tr>
 		<c:forEach items="${tableHeader}" var="name">
-			<th class="main-table-td" scope="col">${name}</th>
+			<th scope="col">${name}</th>
 		</c:forEach>
 	</tr>
 	<c:forEach items="${books}" var="currBook">

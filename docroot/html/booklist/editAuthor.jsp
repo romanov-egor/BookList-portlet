@@ -30,93 +30,96 @@
 	<portlet:param name="authorId" value="${author.getId()}"/>
 </portlet:actionURL>
 
-<c:if test="${author == null}">
-	<h1>Add Author</h1>
-	<portlet:actionURL name="addAuthor" var="authorDetails"></portlet:actionURL>
-	<c:set var="firstName" scope="session" value=""/>
-	<c:set var="lastName" scope="session" value=""/>
-	<c:set var="birthDate" scope="session" value=""/>
-	<c:set var="email" scope="session" value=""/>	
-</c:if>
-<c:if test="${author != null}">
-	<h1>Edit Author</h1>
-	<portlet:actionURL name="updateAuthor" var="authorDetails">
-		<portlet:param name="authorId" value="${author.getId()}"/>
-	</portlet:actionURL>
-	<c:set var="firstName" scope="session" value="${author.getFirstName()}"/>
-	<c:set var="lastName" scope="session" value="${author.getLastName()}"/>
-	<c:set var="birthDate" scope="session" value="${author.getBirthDate()}"/>
-	<c:set var="email" scope="session" value="${author.getEmail()}"/>
-</c:if>
-	
-<form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
-	<table>
-		<tr>
-			<td>
-				<label for="first-name-field">First Name</label>
-			</td>
-			<td>
-				<input id="first-name-field" name="<portlet:namespace />firstName" type="text" value="${firstName}" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="last-name-field">Last Name</label>
-			</td>
-			<td> 
-				<input id="last-name-field" name="<portlet:namespace />lastName" type="text" value="${lastName}" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="birth-date-field">Birth Date</label>
-			</td>
-			<td>
-				<input id="birth-date-field" name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="email-field">Email</label>
-			</td>
-			<td>
-				<input id="email-field" name="<portlet:namespace />email" type="date" value="${email}" />
-			</td>
-		</tr>
-	</table>
-    <button class="btn btn-primary" type="submit" name="submit">Submit changes</button>
-	<c:if test="${author != null}">
-		<a class="btn" href="${deleteURL}">Delete this Author</a>
+<div>
+	<c:if test="${author == null}">
+		<h1>Add Author</h1>
+		<portlet:actionURL name="addAuthor" var="authorDetails"></portlet:actionURL>
+		<c:set var="firstName" scope="session" value=""/>
+		<c:set var="lastName" scope="session" value=""/>
+		<c:set var="birthDate" scope="session" value=""/>
+		<c:set var="email" scope="session" value=""/>	
 	</c:if>
-	<a class="btn" href="${viewURL}">Cancel</a>
-	<p>
-	    <c:if test="${author != null}">
-		    <h2>Books of this Author</h2>
-		    <ul>
-				<c:forEach items="${author.getRelatedBooks()}" var="currBook">
-					<portlet:renderURL var="editBookURL">
-						<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
-						<portlet:param name="backURL" value="/html/booklist/editAuthor.jsp"/>
-						<portlet:param name="bookId" value="${currBook.getBookId()}" />
-						<portlet:param name="mode" value="editBook" />
-					</portlet:renderURL>
-					<li>
-						<a class="table-link" href="${editBookURL}">
-							<c:if test="${bookPrefs.isTitleVisible()}">
-								${currBook.getTitle()} 
-							</c:if>
-							<c:if test="${bookPrefs.isIsbnVisible()}">
-								${currBook.getISBN()} 
-							</c:if>
-							<c:if test="${bookPrefs.isReleaseDateVisible()}">
-								${currBook.getReleaseDate()} 
-							</c:if>
-						</a>
-					</li>
-				</c:forEach>
-			</ul>
-			<a class="btn" href="${listURL}">Add or Remove Books</a>
+	<c:if test="${author != null}">
+		<h1>Edit Author</h1>
+		<portlet:actionURL name="updateAuthor" var="authorDetails">
+			<portlet:param name="authorId" value="${author.getId()}"/>
+		</portlet:actionURL>
+		<c:set var="firstName" scope="session" value="${author.getFirstName()}"/>
+		<c:set var="lastName" scope="session" value="${author.getLastName()}"/>
+		<c:set var="birthDate" scope="session" value="${author.getBirthDate()}"/>
+		<c:set var="email" scope="session" value="${author.getEmail()}"/>
+	</c:if>
+	
+	<form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
+		<table>
+			<tr>
+				<td>
+					<label for="first-name-field">First Name</label>
+				</td>
+				<td>
+					<input id="first-name-field" name="<portlet:namespace />firstName" type="text" value="${firstName}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="last-name-field">Last Name</label>
+				</td>
+				<td> 
+					<input id="last-name-field" name="<portlet:namespace />lastName" type="text" value="${lastName}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="birth-date-field">Birth Date</label>
+				</td>
+				<td>
+					<input id="birth-date-field" name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="email-field">Email</label>
+				</td>
+				<td>
+					<input id="email-field" name="<portlet:namespace />email" type="date" value="${email}" />
+				</td>
+			</tr>
+		</table>
+	    <button class="btn btn-primary" type="submit" name="submit">Submit changes</button>
+		<c:if test="${author != null}">
+			<a class="btn" href="${deleteURL}">Delete this Author</a>
 		</c:if>
-	</p>
-</form>
+		<a class="btn" href="${viewURL}">Cancel</a>
+	</form>
+</div>
+<div>
+    <c:if test="${author != null}">
+	    <h2>Books of this Author</h2>
+	    <ul>
+			<c:forEach items="${author.getRelatedBooks()}" var="currBook">
+				<portlet:renderURL var="editBookURL">
+					<portlet:param name="mvcPath" value="/html/booklist/editBook.jsp"></portlet:param>
+					<portlet:param name="backURL" value="/html/booklist/editAuthor.jsp"/>
+					<portlet:param name="bookId" value="${currBook.getBookId()}" />
+					<portlet:param name="mode" value="editBook" />
+				</portlet:renderURL>
+				<li>
+					<a class="table-link" href="${editBookURL}">
+						<c:if test="${bookPrefs.isTitleVisible()}">
+							${currBook.getTitle()} 
+						</c:if>
+						<c:if test="${bookPrefs.isIsbnVisible()}">
+							${currBook.getISBN()} 
+						</c:if>
+						<c:if test="${bookPrefs.isReleaseDateVisible()}">
+							${currBook.getReleaseDate()} 
+						</c:if>
+					</a>
+				</li>
+			</c:forEach>
+		</ul>
+		<a class="btn" href="${listURL}">Add or Remove Books</a>
+	</c:if>
+</div>
+
 
