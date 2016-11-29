@@ -29,7 +29,7 @@
 	<portlet:param name="bookId" value="${book.getId()}"/>
 </portlet:actionURL>
 
-<div>
+<div class="edit-container">
 	<c:if test="${book == null}">
 		<h1>Add Book</h1>
 		<portlet:actionURL name="addBook" var="bookDetails"></portlet:actionURL>
@@ -49,40 +49,22 @@
 	</c:if>
 
 	<form name="<portlet:namespace />fm1" action="${bookDetails}" method="POST">
-		<table>
-			<tr>
-				<td class="edit-table-td">
-					<label for="title-field">Title</label>
-				</td>
-				<td class="edit-table-td">
-					<input id="title-field" name="<portlet:namespace />title" type="text" value="${title}" />
-				</td>
-			</tr>
-			<tr>
-				<td class="edit-table-td">
-					<label for="isbn-field">ISBN</label>
-				</td>
-				<td class="edit-table-td">
-					<input id="isbn-field" name="<portlet:namespace />ISBN" type="text" value="${ISBN}" />
-				</td>
-			</tr>
-			<tr>
-				<td class="edit-table-td">
-					<label for="release-date-field">Release Date</label>
-				</td>
-				<td class="edit-table-td">
-					<input id="release-date-field" name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}" />
-				</td>
-			</tr>
-		</table>
-		<button class="btn btn-primary" type="submit" name="submit">Submit changes</button>
-		<c:if test="${book != null}">
-			<a class="btn" href="${deleteURL}">Delete this Book</a>
-		</c:if>
-		<a class="btn" href="${viewURL}">Cancel</a>
+		<label for="title-field">Title</label>
+		<input id="title-field" name="<portlet:namespace />title" type="text" value="${title}" />
+		<label for="isbn-field">ISBN</label>
+		<input id="isbn-field" name="<portlet:namespace />ISBN" type="text" value="${ISBN}" />
+		<label for="release-date-field">Release Date</label>
+		<input id="release-date-field" name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}" />
+		<div>
+			<button class="btn btn-primary" type="submit" name="submit">Submit changes</button>
+			<c:if test="${book != null}">
+				<a class="btn" href="${deleteURL}">Delete this Book</a>
+			</c:if>
+			<a class="btn" href="${viewURL}">Cancel</a>
+		</div>
 	</form>
 </div>
-<div>
+<div class="edit-container">
     <c:if test="${book != null}">
     	<h2>Authors of this Book</h2>
     	<ul>

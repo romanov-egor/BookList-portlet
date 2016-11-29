@@ -51,45 +51,21 @@
 	</c:if>
 	
 	<form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
-		<table>
-			<tr>
-				<td class="edit-table-td">
-					<label for="first-name-field">First Name</label>
-				</td>
-				<td class="edit-table-td">
-					<input id="first-name-field" name="<portlet:namespace />firstName" type="text" value="${firstName}" />
-				</td>
-			</tr>
-			<tr>
-				<td class="edit-table-td">
-					<label for="last-name-field">Last Name</label>
-				</td>
-				<td class="edit-table-td"> 
-					<input id="last-name-field" name="<portlet:namespace />lastName" type="text" value="${lastName}" />
-				</td>
-			</tr>
-			<tr>
-				<td class="edit-table-td">
-					<label for="birth-date-field">Birth Date</label>
-				</td>
-				<td class="edit-table-td">
-					<input id="birth-date-field" name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
-				</td>
-			</tr>
-			<tr>
-				<td class="edit-table-td">
-					<label for="email-field">Email</label>
-				</td>
-				<td class="edit-table-td">
-					<input id="email-field" name="<portlet:namespace />email" type="date" value="${email}" />
-				</td>
-			</tr>
-		</table>
-	    <button class="btn btn-primary" type="submit" name="submit">Submit changes</button>
-		<c:if test="${author != null}">
-			<a class="btn" href="${deleteURL}">Delete this Author</a>
-		</c:if>
-		<a class="btn" href="${viewURL}">Cancel</a>
+		<label for="first-name-field">First Name</label>
+		<input id="first-name-field" name="<portlet:namespace />firstName" type="text" value="${firstName}" />
+		<label for="last-name-field">Last Name</label>
+		<input id="last-name-field" name="<portlet:namespace />lastName" type="text" value="${lastName}" />
+		<label for="birth-date-field">Birth Date</label>
+		<input id="birth-date-field" name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
+		<label for="email-field">Email</label>
+		<input id="email-field" name="<portlet:namespace />email" type="text" value="${email}" />
+		<div>
+		    <button class="btn btn-primary" type="submit" name="submit">Submit changes</button>
+			<c:if test="${author != null}">
+				<a class="btn" href="${deleteURL}">Delete this Author</a>
+			</c:if>
+			<a class="btn" href="${viewURL}">Cancel</a>
+		</div>
 	</form>
 </div>
 <div>

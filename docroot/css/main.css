@@ -24,6 +24,15 @@ th {
   text-align: left;
 }
 
+.table-link:hover {
+  color: #006400 !important;
+  text-decoration: none !important;
+}
+
+.main-table-td:hover {
+  background-color: #8FBC8F;
+}
+
 .edit-table-td {
 	background-color: #FFFFFF;
 	border: 0;
@@ -32,4 +41,14 @@ th {
 
 .cell-item {
   margin: 4px; 
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 !important;
+}
+
+.edit-container {
+	display: inline-block;
+	float: right;
 }
