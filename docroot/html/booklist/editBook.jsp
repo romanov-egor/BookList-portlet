@@ -51,26 +51,26 @@
 	<form name="<portlet:namespace />fm1" action="${bookDetails}" method="POST">
 		<table>
 			<tr>
-				<td>
+				<td class="edit-table-td">
 					<label for="title-field">Title</label>
 				</td>
-				<td>
+				<td class="edit-table-td">
 					<input id="title-field" name="<portlet:namespace />title" type="text" value="${title}" />
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="edit-table-td">
 					<label for="isbn-field">ISBN</label>
 				</td>
-				<td>
+				<td class="edit-table-td">
 					<input id="isbn-field" name="<portlet:namespace />ISBN" type="text" value="${ISBN}" />
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="edit-table-td">
 					<label for="release-date-field">Release Date</label>
 				</td>
-				<td>
+				<td class="edit-table-td">
 					<input id="release-date-field" name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}" />
 				</td>
 			</tr>

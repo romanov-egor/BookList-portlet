@@ -53,34 +53,34 @@
 	<form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
 		<table>
 			<tr>
-				<td>
+				<td class="edit-table-td">
 					<label for="first-name-field">First Name</label>
 				</td>
-				<td>
+				<td class="edit-table-td">
 					<input id="first-name-field" name="<portlet:namespace />firstName" type="text" value="${firstName}" />
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="edit-table-td">
 					<label for="last-name-field">Last Name</label>
 				</td>
-				<td> 
+				<td class="edit-table-td"> 
 					<input id="last-name-field" name="<portlet:namespace />lastName" type="text" value="${lastName}" />
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="edit-table-td">
 					<label for="birth-date-field">Birth Date</label>
 				</td>
-				<td>
+				<td class="edit-table-td">
 					<input id="birth-date-field" name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="edit-table-td">
 					<label for="email-field">Email</label>
 				</td>
-				<td>
+				<td class="edit-table-td">
 					<input id="email-field" name="<portlet:namespace />email" type="date" value="${email}" />
 				</td>
 			</tr>
