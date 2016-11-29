@@ -52,31 +52,39 @@
 <form name="<portlet:namespace />fm1" action="${authorDetails}" method="POST">
 	<table>
 		<tr>
-			<td>First Name</td>
 			<td>
-				<input name="<portlet:namespace />firstName" type="text" value="${firstName}" />
+				<label for="first-name-field">First Name</label>
+			</td>
+			<td>
+				<input id="first-name-field" name="<portlet:namespace />firstName" type="text" value="${firstName}" />
 			</td>
 		</tr>
 		<tr>
-			<td>Last Name</td>
+			<td>
+				<label for="last-name-field">Last Name</label>
+			</td>
 			<td> 
-				<input name="<portlet:namespace />lastName" type="text" value="${lastName}" />
+				<input id="last-name-field" name="<portlet:namespace />lastName" type="text" value="${lastName}" />
 			</td>
 		</tr>
 		<tr>
-			<td>Birth Date</td>
 			<td>
-				<input name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
+				<label for="birth-date-field">Birth Date</label>
+			</td>
+			<td>
+				<input id="birth-date-field" name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
 			</td>
 		</tr>
 		<tr>
-			<td>Email</td>
 			<td>
-				<input name="<portlet:namespace />email" type="date" value="${email}" />
+				<label for="email-field">Email</label>
+			</td>
+			<td>
+				<input id="email-field" name="<portlet:namespace />email" type="date" value="${email}" />
 			</td>
 		</tr>
 	</table>
-    <button class="btn" type="submit" name="submit">Submit changes</button>
+    <button class="btn btn-primary" type="submit" name="submit">Submit changes</button>
 	<c:if test="${author != null}">
 		<a class="btn" href="${deleteURL}">Delete this Author</a>
 	</c:if>

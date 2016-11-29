@@ -24,12 +24,12 @@
 			<portlet:param name="authorId" value="${currAuthor.getAuthorId()}"/>
 		</portlet:actionURL>
 		<tr>
-			<td>${currAuthor.getFirstName()}</td>
-			<td>${currAuthor.getLastName()}</td>
-			<td>${currAuthor.getBirthDate()}</td>
-			<td>${currAuthor.getEmail()}</td>
+			<td class="main-table-td">${currAuthor.getFirstName()}</td>
+			<td class="main-table-td">${currAuthor.getLastName()}</td>
+			<td class="main-table-td">${currAuthor.getBirthDate()}</td>
+			<td class="main-table-td">${currAuthor.getEmail()}</td>
 			<td>
-				<a class="table-btn" href="${removeAuthorForBookURL}">Remove</a>
+				<a class="btn" href="${removeAuthorForBookURL}">Remove</a>
 			</td>
 		</tr>
 	</c:forEach>
@@ -40,12 +40,12 @@
 			<portlet:param name="authorId" value="${currAuthor.getAuthorId()}"/>
 		</portlet:actionURL>
 		<tr>
-			<td>${currAuthor.getFirstName()}</td>
-			<td>${currAuthor.getLastName()}</td>
-			<td>${currAuthor.getBirthDate()}</td>
-			<td>${currAuthor.getEmail()}</td>
+			<td class="main-table-td">${currAuthor.getFirstName()}</td>
+			<td class="main-table-td">${currAuthor.getLastName()}</td>
+			<td class="main-table-td">${currAuthor.getBirthDate()}</td>
+			<td class="main-table-td">${currAuthor.getEmail()}</td>
 			<td>
-				<a class="table-btn" href="${addAuthorForBookURL}">Add</a>
+				<a class="btn" href="${addAuthorForBookURL}">Add</a>
 			</td>
 		</tr>
 	</c:forEach>

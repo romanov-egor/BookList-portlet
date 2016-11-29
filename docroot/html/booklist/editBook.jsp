@@ -51,25 +51,31 @@
 <form name="<portlet:namespace />fm1" action="${bookDetails}" method="POST">
 	<table>
 		<tr>
-			<td>Title</td>
 			<td>
-				<input name="<portlet:namespace />title" type="text" value="${title}" />
+				<label for="title-field">Title</label>
+			</td>
+			<td>
+				<input id="title-field" name="<portlet:namespace />title" type="text" value="${title}" />
 			</td>
 		</tr>
 		<tr>
-			<td>ISBN</td>
 			<td>
-				<input name="<portlet:namespace />ISBN" type="text" value="${ISBN}" />
+				<label for="isbn-field">ISBN</label>
+			</td>
+			<td>
+				<input id="isbn-field" name="<portlet:namespace />ISBN" type="text" value="${ISBN}" />
 			</td>
 		</tr>
 		<tr>
-			<td>Release Date</td>
 			<td>
-				<input name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}" />
+				<label for="release-date-field">Release Date</label>
+			</td>
+			<td>
+				<input id="release-date-field" name="<portlet:namespace />releaseDate" type="date" value="${releaseDate}" />
 			</td>
 		</tr>
 	</table>
-	<button class="btn" type="submit" name="submit">Submit changes</button>
+	<button class="btn btn-primary" type="submit" name="submit">Submit changes</button>
 	<c:if test="${book != null}">
 		<a class="btn" href="${deleteURL}">Delete this Book</a>
 	</c:if>

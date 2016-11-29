@@ -23,11 +23,11 @@
 			<portlet:param name="bookId" value="${currBook.getBookId()}"/>
 		</portlet:actionURL>
 		<tr>
-			<td>${currBook.getTitle()}</td>
-			<td>${currBook.getIsbn()}</td>
-			<td>${currBook.getReleaseDate()}</td>
+			<td class="main-table-td">${currBook.getTitle()}</td>
+			<td class="main-table-td">${currBook.getIsbn()}</td>
+			<td class="main-table-td">${currBook.getReleaseDate()}</td>
 			<td>
-				<a class="table-btn" href="${removeBookForAuthorURL}">Remove</a>
+				<a class="btn" href="${removeBookForAuthorURL}">Remove</a>
 			</td>
 		</tr>
 	</c:forEach>			
@@ -39,11 +39,11 @@
 			<portlet:param name="bookId" value="${currBook.getBookId()}"/>
 		</portlet:actionURL>
 		<tr>
-			<td>${currBook.getTitle()}</td>
-			<td>${currBook.getIsbn()}</td>
-			<td>${currBook.getReleaseDate()}</td>
+			<td class="main-table-td">${currBook.getTitle()}</td>
+			<td class="main-table-td">${currBook.getIsbn()}</td>
+			<td class="main-table-td">${currBook.getReleaseDate()}</td>
 			<td>
-				<a class="table-btn" href="${addBookForAuthorURL}">Add</a>
+				<a class="btn" href="${addBookForAuthorURL}">Add</a>
 			</td>
 		</tr>
 	</c:forEach>
