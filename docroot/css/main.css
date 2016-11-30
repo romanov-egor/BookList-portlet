@@ -147,22 +147,16 @@ label:hover .hint {
 	background-color: red;
 	display: table-cell;
     width: auto;
-    margin-left: 0;
-    margin-right: 0;
 }
 
 .inline-block-color-2 {
 	background-color: blue;
 	display: table-cell;
     width: auto;
-    margin-left: 0;
-    margin-right: 0;
 }
 
 .inline-block-color-3 {
 	background-color: green;
 	display: table-cell;
     width: auto;
-    margin-left: 0;
-    margin-right: 0;
 }
