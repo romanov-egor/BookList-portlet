@@ -22,6 +22,7 @@ th {
 	font-weight: normal;
 	text-align: left;
 }
+
 /*Main table options*/
 .main-table-link:hover {
 	color: #9477f7 !important;
@@ -36,13 +37,8 @@ th {
 	list-style-type: none;
 	margin: 0 !important;
 }
-/*Table on edit page options*/
-.edit-table-td {
-	background-color: #FFFFFF;
-	border: 0;
-	padding: 0;
-}
 
+/*Table on addAuthorToBook and addBookToAuthor page options*/
 td.col-email {
 	color: green;
 }
@@ -75,12 +71,11 @@ td.col-email {
 	}
 	
 	.container-right {
-		float: left;
 		clear: left;
 	}
 }
 
-/*Table on addAuthor and addBook page options*/
+/*Table on addAuthorToBook and addBookToAuthor page options*/
 @media all and (min-width: 1025px) {
 	.col-birth-date, .col-release-date {
 		display: table-cell;
@@ -102,8 +97,8 @@ label .hint {
     color: red;
     font-size: 12px;
     
-    position: absolute;
-    z-index: 1;
+    /*position: absolute;
+    z-index: 1;*/
     margin: 0 5px;
 }
 
@@ -131,6 +126,9 @@ label:hover .hint {
 	text-decoration: none !important;
 }
 
+/*
+	Portlet body
+*/
 .portlet-content {
 	overflow: auto;
 }
