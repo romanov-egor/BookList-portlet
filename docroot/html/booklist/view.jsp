@@ -18,7 +18,7 @@
 	<a class="btn" href="${addBookURL}">Add Book</a>
 	<a class="btn" href="${addAuthorURL}">Add Author</a>
 </div>
-<table class="main-table">
+<table>
 	<tr>
 		<c:forEach items="${tableHeader}" var="name">
 			<th scope="col">${name}</th>
@@ -33,7 +33,7 @@
 					<portlet:param name="bookId" value="${currBook.getId()}" />
 					<portlet:param name="mode" value="editBook" />
 				</portlet:renderURL>
-				<a class="table-link" href="${editBookURL}">
+				<a class="main-table-link" href="${editBookURL}">
 					<c:if test="${bookPrefs.isTitleVisible()}">
 						${currBook.getTitle()}
 					</c:if>
@@ -47,7 +47,7 @@
 			</td>
 			<td class="main-table-td">
 				<c:if test="${currBook.getRelatedAuthors() != null}">
-					<ul>
+					<ul class="main-table-ul">
 						<c:forEach items="${currBook.getRelatedAuthors()}" var="currAuthor">
 							<li>
 								<portlet:renderURL var="editAuthorURL">
@@ -56,7 +56,7 @@
 									<portlet:param name="authorId" value="${currAuthor.getAuthorId()}" />
 									<portlet:param name="mode" value="editAuthor" />
 								</portlet:renderURL>
-								<a class="table-link" href="${editAuthorURL}">
+								<a class="main-table-link" href="${editAuthorURL}">
 									<c:if test="${authorPrefs.isFirstNameVisible()}">
 										${currAuthor.getFirstName()}
 									</c:if>
@@ -78,3 +78,14 @@
 		</tr>
 	</c:forEach>
 </table>
+<div class="inline-block-example">
+	<div class="inline-block-color-1">
+	1
+	</div>
+	<div class="inline-block-color-2">
+	2
+	</div>
+	<div class="inline-block-color-3">
+	3
+	</div>
+</div>

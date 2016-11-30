@@ -9,12 +9,13 @@
 	<portlet:param name="mode" value="editBook" />
 </portlet:renderURL>
 
+<a class="btn" href="${backURL}">Cancel</a>
 <table>
 	<tr>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Birth Date</th>
-		<th>Email</th>
+		<th class="col-first-name">First Name</th>
+		<th class="col-last-name">Last Name</th>
+		<th class="col-birth-date">Birth Date</th>
+		<th class="col-email">Email</th>
 		<th></th>
 	</tr>
 	<c:forEach items="${book.getRelatedAuthors()}" var="currAuthor">
@@ -24,12 +25,12 @@
 			<portlet:param name="authorId" value="${currAuthor.getAuthorId()}"/>
 		</portlet:actionURL>
 		<tr>
-			<td class="main-table-td">${currAuthor.getFirstName()}</td>
-			<td class="main-table-td">${currAuthor.getLastName()}</td>
-			<td class="main-table-td">${currAuthor.getBirthDate()}</td>
-			<td class="main-table-td">${currAuthor.getEmail()}</td>
+			<td class="col-first-name">${currAuthor.getFirstName()}</td>
+			<td class="col-last-name">${currAuthor.getLastName()}</td>
+			<td class="col-birth-date">${currAuthor.getBirthDate()}</td>
+			<td class="col-email">${currAuthor.getEmail()}</td>
 			<td>
-				<a class="btn" href="${removeAuthorForBookURL}">Remove</a>
+				<a href="${removeAuthorForBookURL}"><i class="icon-minus"></i></a>
 			</td>
 		</tr>
 	</c:forEach>
@@ -40,14 +41,13 @@
 			<portlet:param name="authorId" value="${currAuthor.getAuthorId()}"/>
 		</portlet:actionURL>
 		<tr>
-			<td class="main-table-td">${currAuthor.getFirstName()}</td>
-			<td class="main-table-td">${currAuthor.getLastName()}</td>
-			<td class="main-table-td">${currAuthor.getBirthDate()}</td>
-			<td class="main-table-td">${currAuthor.getEmail()}</td>
+			<td class="col-first-name">${currAuthor.getFirstName()}</td>
+			<td class="col-last-name">${currAuthor.getLastName()}</td>
+			<td class="col-birth-date">${currAuthor.getBirthDate()}</td>
+			<td class="col-email">${currAuthor.getEmail()}</td>
 			<td>
-				<a class="btn" href="${addAuthorForBookURL}">Add</a>
+				<a href="${addAuthorForBookURL}"><i class="icon-plus"></i></a>
 			</td>
 		</tr>
 	</c:forEach>
 </table>
-<a class="btn" href="${backURL}">Cancel</a>

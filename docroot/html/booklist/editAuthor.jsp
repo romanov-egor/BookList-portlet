@@ -56,7 +56,7 @@
 		<label for="last-name-field">Last Name</label>
 		<input id="last-name-field" name="<portlet:namespace />lastName" type="text" value="${lastName}" />
 		<label for="birth-date-field">Birth Date</label>
-		<input id="birth-date-field" name="<portlet:namespace />birthDate" type="date" value="${birthDate}" />
+		<input id="birth-date-field" name="<portlet:namespace />birthDate" type="text" value="${birthDate}" />
 		<label for="email-field">Email</label>
 		<input id="email-field" name="<portlet:namespace />email" type="text" value="${email}" />
 		<div>
